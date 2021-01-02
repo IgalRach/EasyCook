@@ -36,7 +36,7 @@ export default function App() {
           </ol>
           <div className="carousel-inner" role="listbox">
             <div className="carousel-item active">
-              <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide" />
+              <img className="d-block img-fluid\" src="https://www.englishclub.com/images/vocabulary/food/italian/italian-food-1024.jpg" alt="First slide" />
             </div>
             <div className="carousel-item">
               <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide" />

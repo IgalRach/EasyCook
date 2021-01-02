@@ -6,9 +6,12 @@ export default function List(){
 
 const [items,setItems]=React.useState([]);
 
+React.useEffect(()=>{
 fetch ('http://localhost:8081/movie')
 .then((response)=>response.json())
 .then((data)=>setItems(data));
+},[q]); // calling once for function from Mongo
+
 
 if (items.length<1)
 return "";
