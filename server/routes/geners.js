@@ -16,3 +16,5 @@ router.put('/', (req,res)=>{
 router.delete('/', (req,res)=>{
     res.send('Genres Delete entry point');
 });
+
+module.exports = router;

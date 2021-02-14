@@ -1,14 +1,14 @@
-const express = require('express');
-const bodyParser =require ('body-parser');
-const movies =requestAnimationFrame('./routes/movies');
-const genres = require('/routes/genres');
-var cors=require('cors');
-var app = express();
+const  express = require('express');
+const bosyParser = require('body-parser');
+const recipes = require('./routes/recipes');
+const geners = require('./routes/geners');
+const accounts = require('./routes/accounts');
+const app = express();
+app.use(bosyParser.urlencoded({extended:true}));
+app.use('/recipes',recipes);
+app.use('/accounts',accounts);
+app.use('/geners',geners);
 
-app.use(cors());
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use('/movies', movies);
-app.listen('/genres', genres);
+app.listen(8082);
 
-app.listen(8081);
