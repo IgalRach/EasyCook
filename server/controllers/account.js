@@ -3,16 +3,16 @@ const Account = require('../models/account');
 
 const create = (req,res)=>{
     const account = new Account({ 
-        accountId:ObjectId,
+        accountId:ObjectId(null),
         userName: req.body.userName,
         email: req.body.email,
         password: req.body.password,
-        profilePicture: req.body.type,
+      //  profilePicture: req.body.type,
         
         // array of recipes
     });
 
-    account.save().then(() => {
+    account.save().then(accountId = ObjectId()).then(() => {
         res.redirect('/accounts');
     }).catch(error => {
         res.send('failed');
