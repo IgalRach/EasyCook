@@ -1,11 +1,14 @@
+const { ObjectId } = require('mongodb');
 const Account = require('../models/account');
 
 const create = (req,res)=>{
     const account = new Account({ 
+        accountId:ObjectId,
         userName: req.body.userName,
         email: req.body.email,
         password: req.body.password,
         profilePicture: req.body.type,
+        
         // array of recipes
     });
 

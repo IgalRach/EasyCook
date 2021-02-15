@@ -1,16 +1,18 @@
+const { ObjectId } = require('mongodb');
 const Recipe = require('../models/recipe');
 
 const create = (req,res)=>{
     const recipe = new Recipe({ 
+        recipeId:ObjectId,
         recipeTitle: req.body.recipeTitle,
         ingredients: req.body.ingredients,
         recipeProcess: req.body.recipeProcess,
-        type: req.body.type,
-        recipePicture:req.boby.recipePicture
+       // type: req.body.type,
+        //recipePicture:req.boby.recipePicture
     });
 
     recipe.save().then(() => {
-        res.redirect('/recipe');
+        res.redirect('/recipes');
     }).catch(error => {
         res.send('failed');
     });
