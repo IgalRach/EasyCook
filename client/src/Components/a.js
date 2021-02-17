@@ -1,4 +1,4 @@
-import React from "react";
+
 export default function A() {
- return <h1>A</h1>;
+    return <h1>A</h1>;
 }
