@@ -2,7 +2,8 @@ const  express = require('express');
 //--------------------------------Database Connection--------------------------------------------------
 const mongoose = require('mongoose');
 const connectionString = ("mongodb+srv://easycook:asd123@easycook.8bkru.mongodb.net/<easycook>?retryWrites=true&w=majority");
-mongoose.connect(connectionString,{useNewUrlParser: true},{ useUnifiedTopology: true });
+
+mongoose.connect(connectionString,{useNewUrlParser: true,  useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //-----------------------------------End of Database Connection----------------------------------------
