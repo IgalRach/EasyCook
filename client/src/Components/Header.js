@@ -42,7 +42,7 @@ export default function Header() {
                         {/* Menu */}
                         <nav className="classy-navbar justify-content-between" id="deliciousNav">
                             {/* Logo */}
-                            <a className="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
+                            <a className="nav-brand" href="index.html"><img src="img/core-img/easyCookLogo.png" alt="" /></a>
                             {/* Navbar Toggler */}
                             <div className="classy-navbar-toggler">
                                 <span className="navbarToggler"><span /><span /><span /></span>
@@ -57,7 +57,7 @@ export default function Header() {
                                 <div className="classynav">
                                     <ul>
                                         <li className="active"><a href="index.html">Home</a></li>
-                                        <li><a href="#">Pages</a>
+                                        {/* <li><a href="#">Pages</a>
                                             <ul className="dropdown">
                                                 <li><a href="index.html">Home</a></li>
                                                 <li><a href="about.html">About Us</a></li>
@@ -86,8 +86,8 @@ export default function Header() {
                                                     </ul>
                                                 </li>
                                             </ul>
-                                        </li>
-                                        <li><a href="#">Mega Menu</a>
+                                        </li> */}
+                                        {/* <li><a href="#">Mega Menu</a>
                                             <div className="megamenu">
                                                 <ul className="single-mega cn-col-4">
                                                     <li className="title">Catagory</li>
@@ -123,9 +123,9 @@ export default function Header() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> */}
                                         <li><a href="receipe-post.html">Receipies</a></li>
-                                        <li><a href="receipe-post.html">4 Vegans</a></li>
+                                        {/* <li><a href="receipe-post.html">4 Vegans</a></li> */}
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                     {/* Newsletter Form */}
