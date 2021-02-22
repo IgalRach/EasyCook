@@ -1,79 +1,567 @@
-
-import React from "react";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Item from "./Components/Item";
-// import A from "./Components/a";
-// import B from "./Components/b";
-// import Menu from "./Components/menu";
-// import { BrowserRouter, Route, Switch } from "react-router-dom";
+import './App.css';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import TopCategoryItem from './Components/topCategoryItem';
+import categoryList from './Components/categoryList';
 
 export default function App() {
- return (
-
-
-<div>
-  
-  <Header/>
-  {/* Page Content */}
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-3">
-        <h1 className="my-4">Shop Name</h1>
-        <div className="list-group">
-          <a href="#" className="list-group-item">Category 1</a>
-          <a href="#" className="list-group-item">Category 2</a>
-          <a href="#" className="list-group-item">Category 3</a>
-        </div>
+  return (
+    <div>
+      {/* Preloader */}
+      <div id="preloader">
+        <i className="circle-preloader" />
+        <img src="img/core-img/salad.png" alt="" />
       </div>
-      {/* /.col-lg-3 */}
-      <div className="col-lg-9">
-        <div id="carouselExampleIndicators" className="carousel slide my-4" data-ride="carousel">
-          <ol className="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to={0} className="active" />
-            <li data-target="#carouselExampleIndicators" data-slide-to={1} />
-            <li data-target="#carouselExampleIndicators" data-slide-to={2} />
-          </ol>
-          <div className="carousel-inner" role="listbox">
-            <div className="carousel-item active">
-              <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide" />
+      {/* Search Wrapper */}
+      <div className="search-wrapper">
+        {/* Close Btn */}
+        <div className="close-btn"><i className="fa fa-times" aria-hidden="true" /></div>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <form action="#" method="post">
+                <input type="search" name="search" placeholder="Type any keywords..." />
+                <button type="submit"><i className="fa fa-search" aria-hidden="true" /></button>
+              </form>
             </div>
           </div>
-          <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="sr-only">Previous</span>
-          </a>
-          <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="sr-only">Next</span>
-          </a>
         </div>
-        {/* <div className="row">
-      <Item name=" recepie 1" ingredient="kind of food"/>
-      <Item name ="recepie 2" ingredient="kind of food"/> 
-      <Item name ="recepie 3" ingredient="kind of food"/>
-      <Item name ="recepie 4" ingredient="kind of food"/>
-      <Item name ="recepie 5" ingredient="kind of food"/>
-      <Item  name ="recepie 6" ingredient="kind of food"/>  
-             
-          </div> */}
-        {/* /.row */}
       </div>
-      {/* /.col-lg-9 */}
+      {/* ##### Header Area Start ##### */}
+      <Header />
+      {/* ##### Header Area End ##### */}
+      {/* ##### Hero Area Start ##### */}
+      <section className="hero-area">
+        <div className="hero-slides owl-carousel">
+          {/* Single Hero Slide */}
+          <div className="single-hero-slide bg-img" style={{ backgroundImage: 'url(img/bg-img/bg1.jpg)' }}>
+            <div className="container h-100">
+              <div className="row h-100 align-items-center">
+                <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+                  <div className="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                    <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
+                    <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem eget dui tristique, ac posuere arcu varius.</p>
+                    <a href="#" className="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Single Hero Slide */}
+          <div className="single-hero-slide bg-img" style={{ backgroundImage: 'url(img/bg-img/bg6.jpg)' }}>
+            <div className="container h-100">
+              <div className="row h-100 align-items-center">
+                <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+                  <div className="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                    <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
+                    <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem eget dui tristique, ac posuere arcu varius.</p>
+                    <a href="#" className="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Single Hero Slide */}
+          <div className="single-hero-slide bg-img" style={{ backgroundImage: 'url(img/bg-img/bg7.jpg)' }}>
+            <div className="container h-100">
+              <div className="row h-100 align-items-center">
+                <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+                  <div className="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                    <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
+                    <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem eget dui tristique, ac posuere arcu varius.</p>
+                    <a href="#" className="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ##### Hero Area End ##### */}
+      {/* ##### Top Catagory Area Start ##### */}
+      <section className="top-catagory-area section-padding-80-0">
+        <div className="container">
+ {/* <CategoryList />  */}
+        </div>
+      </section>
+      {/* ##### Top Catagory Area End ##### */}
+      {/* ##### Best Receipe Area Start ##### */}
+      <section className="best-receipe-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="section-heading">
+                <h3>The best Receipies</h3>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            {/* Single Best Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-best-receipe-area mb-30">
+                <img src="img/bg-img/r1.jpg" alt="" />
+                <div className="receipe-content">
+                  <a href="receipe-post.html">
+                    <h5>Sushi Easy Receipy</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Single Best Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-best-receipe-area mb-30">
+                <img src="img/bg-img/r2.jpg" alt="" />
+                <div className="receipe-content">
+                  <a href="receipe-post.html">
+                    <h5>Homemade Burger</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Single Best Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-best-receipe-area mb-30">
+                <img src="img/bg-img/r3.jpg" alt="" />
+                <div className="receipe-content">
+                  <a href="receipe-post.html">
+                    <h5>Vegan Smoothie</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Single Best Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-best-receipe-area mb-30">
+                <img src="img/bg-img/r4.jpg" alt="" />
+                <div className="receipe-content">
+                  <a href="receipe-post.html">
+                    <h5>Calabasa soup</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Single Best Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-best-receipe-area mb-30">
+                <img src="img/bg-img/r5.jpg" alt="" />
+                <div className="receipe-content">
+                  <a href="receipe-post.html">
+                    <h5>Homemade Breakfast</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Single Best Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-best-receipe-area mb-30">
+                <img src="img/bg-img/r6.jpg" alt="" />
+                <div className="receipe-content">
+                  <a href="receipe-post.html">
+                    <h5>Healthy Fruit Desert</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ##### Best Receipe Area End ##### */}
+      {/* ##### CTA Area Start ##### */}
+      <section className="cta-area bg-img bg-overlay" style={{ backgroundImage: 'url(img/bg-img/bg4.jpg)' }}>
+        <div className="container h-100">
+          <div className="row h-100 align-items-center">
+            <div className="col-12">
+              {/* Cta Content */}
+              <div className="cta-content text-center">
+                <h2>Gluten Free Receipies</h2>
+                <p>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>
+                <a href="#" className="btn delicious-btn">Discover all the receipies</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ##### CTA Area End ##### */}
+      {/* ##### Small Receipe Area Start ##### */}
+      <section className="small-receipe-area section-padding-80-0">
+        <div className="container">
+          <div className="row">
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr1.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Homemade italian pasta</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr2.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Baked Bread</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr3.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Scalops on salt</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr4.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Fruits on plate</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr5.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Macaroons</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr6.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Chocolate tart</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr7.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Berry Desert</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr8.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Zucchini Grilled on peper</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+            {/* Small Receipe Area */}
+            <div className="col-12 col-sm-6 col-lg-4">
+              <div className="single-small-receipe-area d-flex">
+                {/* Receipe Thumb */}
+                <div className="receipe-thumb">
+                  <img src="img/bg-img/sr9.jpg" alt="" />
+                </div>
+                {/* Receipe Content */}
+                <div className="receipe-content">
+                  <span>January 04, 2018</span>
+                  <a href="receipe-post.html">
+                    <h5>Chicken Salad</h5>
+                  </a>
+                  <div className="ratings">
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star" aria-hidden="true" />
+                    <i className="fa fa-star-o" aria-hidden="true" />
+                  </div>
+                  <p>2 Comments</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ##### Small Receipe Area End ##### */}
+      {/* ##### Quote Subscribe Area Start ##### */}
+      <section className="quote-subscribe-adds">
+        <div className="container">
+          <div className="row align-items-end">
+            {/* Quote */}
+            <div className="col-12 col-lg-4">
+              <div className="quote-area text-center">
+                <span>"</span>
+                <h4>Nothing is better than going home to family and eating good food and relaxing</h4>
+                <p>John Smith</p>
+                <div className="date-comments d-flex justify-content-between">
+                  <div className="date">January 04, 2018</div>
+                  <div className="comments">2 Comments</div>
+                </div>
+              </div>
+            </div>
+            {/* Newsletter */}
+            <div className="col-12 col-lg-4">
+              <div className="newsletter-area">
+                <h4>Subscribe to our newsletter</h4>
+                {/* Form */}
+                <div className="newsletter-form bg-img bg-overlay" style={{ backgroundImage: 'url(img/bg-img/bg1.jpg)' }}>
+                  <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Subscribe to newsletter" />
+                    <button type="submit" className="btn delicious-btn w-100">Subscribe</button>
+                  </form>
+                  <p>Fusce nec ante vitae lacus aliquet vulputate. Donec sceleri sque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+                </div>
+              </div>
+            </div>
+            {/* Adds */}
+            <div className="col-12 col-lg-4">
+              <div className="delicious-add">
+                <img src="img/bg-img/add.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ##### Quote Subscribe Area End ##### */}
+      {/* ##### Follow Us Instagram Area Start ##### */}
+      <div className="follow-us-instagram">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h5>Follow Us Instragram</h5>
+            </div>
+          </div>
+        </div>
+        {/* Instagram Feeds */}
+        <div className="insta-feeds d-flex flex-wrap">
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta1.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta2.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta3.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta4.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta5.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta6.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+          {/* Single Insta Feeds */}
+          <div className="single-insta-feeds">
+            <img src="img/bg-img/insta7.jpg" alt="" />
+            {/* Icon */}
+            <div className="insta-icon">
+              <a href="#"><i className="fa fa-instagram" aria-hidden="true" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ##### Follow Us Instagram Area End ##### */}
+      {/* ##### Footer Area Start ##### */}
+  <Footer />
+      {/* ##### Footer Area Start ##### */}
     </div>
-    {/* /.row */}
-  </div>
-  {/* /.container */}
-  {/* Footer */}
-  <Footer/>
-
-  </div>
-
- );
+  );
 }
+
