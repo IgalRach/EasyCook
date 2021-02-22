@@ -6,18 +6,18 @@ export default function CategoryList() {
 
     const [items, setItems] = React.useState([]); //default is empty array
     
-    fetch('http://localhost:8081/movies')
+    fetch('http://localhost:8082/accounts')
         .then((response) => response.json())
         .then((data) => setItems(data));
     
     if (items.length < 1)
-        return "";
+        return "No Items to shows";
 
     return (
         <div className="row">
             {
                 items.map((data, key) => {
-                    return <TopCategoryItem name={data.title} key={key} />
+                    return <TopCategoryItem name={data.userName} key={key} />
                 })
             }
         </div>

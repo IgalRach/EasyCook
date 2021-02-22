@@ -83,7 +83,7 @@ export default function App() {
       {/* ##### Top Catagory Area Start ##### */}
       <section className="top-catagory-area section-padding-80-0">
         <div className="container">
-          <TopCategoryItem />
+          <CategoryList />
         </div>
       </section>
       {/* ##### Top Catagory Area End ##### */}
