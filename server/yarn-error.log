@@ -1,0 +1,52 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\larik\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python38\Scripts\;C:\Python38\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Users\larik\AppData\Local\Microsoft\WindowsApps;C:\Users\larik\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\larik\AppData\Roaming\npm;C:\Users\larik\AppData\Local\GitHubDesktop\bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.18.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\larik\Desktop\Applications\EasyCookProject\server\package.json: Unexpected token / in JSON at position 5
+      at JSON.parse (<anonymous>)
+      at C:\Users\larik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\larik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\larik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+     //"name": "server",
+    "name": "webapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "express-handlebars": "^5.2.0",
+      "hbs": "^4.1.1",
+      "mongodb": "^3.6.3",
+      "mongoose": "^5.11.9"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
