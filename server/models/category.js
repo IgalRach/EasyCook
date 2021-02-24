@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // kind of food recipe - Italian, French, Israel...
 const Category = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    id: mongoose.Schema.Types.ObjectId,
     name: { type: String, required: true },
     createdAt: Date,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },

@@ -18,10 +18,11 @@ const User = new Schema({
         type: String,
         requred: true
     },
-    role: String,  //ueser or admin
-    prifilePic:{type: String},
+    role: String,  //user or admin
+    profilePic:{type: String},
     createat: Date,
     updateAt: Date
+    
 //     recipe : [
 //         {
 //           type: mongoose.Schema.Types.ObjectId,
