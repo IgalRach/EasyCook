@@ -6,12 +6,15 @@ export default function CategoryList() {
 
     const [items, setItems] = React.useState([]); //default is empty array
     
-    fetch('http://localhost:8082/accounts')
+    React.useEffect(()=>{
+        fetch('http://localhost:8082/accounts')
         .then((response) => response.json())
         .then((data) => setItems(data));
     
+    },[]);
+
     if (items.length < 1)
-        return "No Items to shows";
+        return "";
 
     return (
         <div className="row">

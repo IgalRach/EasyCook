@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
 var cors = require('cors');
-
-
+const app = express();
+app.use(cors());
 //--------------------------------Database Connection--------------------------------------------------
 const mongoose = require('mongoose');
 const connectionString = ("mongodb+srv://easycook:asd123@easycook.8bkru.mongodb.net/<easycook>?retryWrites=true&w=majority");
@@ -22,6 +21,9 @@ app.use('/recipes', recipes);
 app.use('/accounts', accounts);
 app.use('/geners', geners);
 app.use('/comments', comments);
-app.use(cors());
+
+
+
+
 app.listen(8082);
 
