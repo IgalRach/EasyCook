@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 
 export default function Post() {
@@ -13,9 +13,9 @@ export default function Post() {
                 {/* Receipe Content */}
                 <div className="receipe-content">
                     <span>January 04, 2018</span>
-                    <a href="receipe-post.html">
+                    <Link to="/recipes/recipe">
                     <h5>Homemade italian pasta</h5>
-                    </a>
+                    </Link>
                     <div className="ratings">
                     <i className="fa fa-star" aria-hidden="true" />
                     <i className="fa fa-star" aria-hidden="true" />
@@ -26,6 +26,6 @@ export default function Post() {
                     <p>2 Comments</p>
                 </div>
                 </div>
-        </div>
+            </div>
         );
 }

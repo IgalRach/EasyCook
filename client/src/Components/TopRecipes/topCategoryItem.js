@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -11,7 +12,7 @@ export default function TopCategoryItem({name}) {
                 <div className="top-cta-content">
                     <h3>{name}</h3>
                     <h6>Simple &amp; Delicios</h6>
-                    <a href="receipe-post.html" className="btn delicious-btn">See Full Receipe</a>
+                    <Link to="/recipes/recipe" className="btn delicious-btn">See Full Receipe</Link>
                 </div>
             </div>
         </div>
