@@ -1,0 +1,21 @@
+<p>
+{{recipe.recipename}}
+{{recipe.description}}
+{{recipe.category}}
+</p>
+
+<!-- Interpolation - good for strings -->
+<!-- <img src="{{path}}"/><br/> -->
+<!-- Property binding -->
+<img [src]="path"/><br/>
+<!-- 
+<img src="https://placehold.it/{{Mypath}}"/><br/> -->
+
+<input #inp/>
+<button (click)="foo(inp.value)">Click me</button>
+{{bar}}
+
+<p>{{datee}}</p>
+<p>{{datee | date}}</p>
+<p>{{datee |date:"dd/MM/yyy"}}</p>
+<p>{{datee |date:"fullDate"| uppercase}}</p>

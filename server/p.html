@@ -1,31 +1,24 @@
 <html>
-    <body> 
- <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
-<form action="http://localhost:8082/accounts" method="POST">
+
+<body>
+    <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+    <form action="http://localhost:8082/users" method="POST">
+        <div>
+            user name:
             <input type="text" name="userName">
+        </div>
+        <div>
+            email:
             <input type="text" name="email">
+        </div>
+        <div>
+            password: 
             <input type="text" name="password">
+        </div>
+        <div>
             <button type="submit"> submit</button>
-        </form>
-    </body>
+        </div>
+    </form>
+</body>
+
 </html>
-
-<!-- <html>
-
-    <body>
-        <input autocomplete="off" placeholder="Enter text to add to chat"/>
-        <button>send</button>
-        <div></div>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="https://code.jquery-3.5.1.slim.min.js">
-        integrity= "sha"</script>
-        <script>
-            var socket = io();
-            socket.on('foo', function (msg) {
-                socket.emit('whatever', 'baz');
-                console.log(msg);
-            });
-        </script>
-    </body>  
-
-</html> -->
