@@ -13,16 +13,29 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //-----------------------------------End of Database Connection----------------------------------------
 const recipes = require('./routes/recipes');
 const geners = require('./routes/geners');
-const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
+const users= require('./routes/users');
+const admins=require('./routes/admins');
+const recipeCarts=require('./routes/recipeCarts');
+const categories=require('./routes/categories');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/recipes', recipes);
-app.use('/accounts', accounts);
+app.use('/admins', admins);
 app.use('/geners', geners);
 app.use('/comments', comments);
+app.use('./users', users);
+app.use('./recipeCarts',recipeCarts);
+app.use('./categories',categories);
+
+app.use(express.json());
+app.use((req,res,next)=>{
+    res.status(404).json({
+        massage: 'Not Found'
+    })
+})
 
 
-
-
+module.exports=app;
 app.listen(8082);

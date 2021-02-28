@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Admin = new Schema({
     id: mongoose.Schema.Types.ObjectId,
-    username: {
+    userName: {
         type: String,
         required:true
     },

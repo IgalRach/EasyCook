@@ -8,7 +8,7 @@ const RecipeCart = new Schema({
         {
             id:{type: mongoose.Schema.Types.ObjectId},
             recipe:{type: mongoose.Schema.Types.ObjectId, ref:'Recipe'},
-            rating:Number
+            rating: Number
         }
     ],
     createAt:{type: Date, default: Date.now()},
