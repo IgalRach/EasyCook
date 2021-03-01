@@ -9,6 +9,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from './Components/mainPage/main';
 import bestRecipes from './Components/mainPage/bestRecipes';
 import recipeDetails from './Components/recipeDetails';
+import io from "socket.io-client";
+
+//need to add to the final project:
+//connecting the server with the client
+const socket= io.connect("http://localhost:8082");
+
+
 
 export default function App() {
   return (

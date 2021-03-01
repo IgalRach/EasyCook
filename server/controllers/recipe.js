@@ -3,10 +3,11 @@ const Recipe = require('../models/recipe');
 
 const create = (req,res)=>{
     const recipe = new Recipe({ 
-        recipeId:ObjectId,
+       // recipeId:ObjectId,
         recipeTitle: req.body.recipeTitle,
         ingredients: req.body.ingredients,
         recipeProcess: req.body.recipeProcess,
+       // recipeImg : String,
        // type: req.body.type,
         //recipePicture:req.boby.recipePicture
     });

@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from "../../recipe"
 
+
+class Item{
+  static nextId=0;
+  constructor(public id? :number,public name?:string){
+    this.id=id? id:Item.nextId++;
+  }
+} 
+
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css']
 })
+
+
 
 export class RecipesComponent {
   recipe: Recipe = {
@@ -30,5 +40,20 @@ export class RecipesComponent {
   }
 
   datee= new Date(2000,1,20);
+  onSave(){console.log('clicked');
+  }
 
+  title ='Hello';
+
+  hello =false;
+  onClick(){
+    this.hello=!this.hello;
+  }
+
+  items:Item[] =[
+    new Item(1,'foo'),
+    new Item(2,'bar'),
+    new Item(3,'hello'),
+    new Item(4,'baz')
+  ];
 }
