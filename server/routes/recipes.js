@@ -8,7 +8,7 @@ var router = express.Router();
 
 router.get('/',recipeController.get);
 
-router.get('/:recipeTitle', recipeController.getByTitle);
+router.get('/title/:recipeTitle', recipeController.getByTitle);
 
 router.get('/:recipeId', recipeController.getById);
 

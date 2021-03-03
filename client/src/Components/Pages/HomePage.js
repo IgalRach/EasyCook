@@ -1,16 +1,16 @@
 import React from "react";
 import Banner from "../banner";
-import TopRecipes from "../TopRecipes/TopRecipes";
+import Search from "../search";
 
 
 
 export default function HomePage() {
     return (
-            <>
-                <TopRecipes/>
-                <Banner/>
-            </>
-        );
+        <>
+            <Search />
+            <Banner />
+        </>
+    );
 }
 
 

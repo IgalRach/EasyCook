@@ -25,7 +25,7 @@ const get = (req,res)=>{
 }
 
 const getByTitle = (req,res)=>{
-    Recipe.findOne({
+    Recipe.find({
         'title': { $regex: `.*${req.params.recipeTitle}.*` }
     }).then(recipe => {
         res.json(recipe);
