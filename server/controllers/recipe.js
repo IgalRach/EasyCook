@@ -32,6 +32,12 @@ const getByTitle = (req,res)=>{
     });
 }
 
+const getById = (req,res)=>{
+    Recipe.findById(req.params.recipeId).then(recipe => {
+        res.json(recipe);
+    });
+}
+
 const update =(req,res)=>{
     res.send('Put entry point');
 }
@@ -39,4 +45,4 @@ const update =(req,res)=>{
 const remove = (req,res)=>{
     res.send('Delete entry point');
 }
-module.exports ={create,get,getByTitle,update,remove}
+module.exports ={create,get,getByTitle,getById,update,remove}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -19,7 +20,7 @@ export default function Header() {
                         {/* Menu */}
                         <nav className="classy-navbar justify-content-between" id="deliciousNav">
                             {/* Logo */}
-                            <a className="nav-brand" href="/"><img src="img/core-img/easyCookLogo.png" alt="" /></a>
+                            <Link className="nav-brand" to="/"><img src="img/core-img/easyCookLogo.png" alt="" /></Link>
                             {/* Navbar Toggler */}
                             <div className="classy-navbar-toggler">
                                 <span className="navbarToggler"><span /><span /><span /></span>
@@ -33,10 +34,10 @@ export default function Header() {
                                 {/* Nav Start */}
                                 <div className="classynav">
                                     <ul>
-                                        <li className="active"><a href="/">Home</a></li>
-                                        <li><a href="/about">About Us</a></li>
-                                        <li><a href="/recipes">Recipes</a></li>
-                                        <li><a href="/contact">Contact</a></li>
+                                        <li className="active"><Link to="/">Home</Link></li>
+                                        <li><Link to="/about">About Us</Link></li>
+                                        <li><Link to="/recipes">Recipes</Link></li>
+                                        <li><Link to="/contact">Contact</Link></li>
                                     </ul>
                                     {/* Newsletter Form */}
                                     <div className="search-btn">
