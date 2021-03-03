@@ -1,14 +1,16 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
 
-// kind of food recipe - Italian, French, Israel...
-const Category = new Schema({
-    id: mongoose.Schema.Types.ObjectId,
-    name: { type: String, required: true },
-    createdAt: Date,
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
-    updatedAt: Date,
-    updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' }
+var Schema = mongoose.Schema;
+
+const Category = new mongoose.Schema({
+  categoryname: {
+    type: String,
+    required: true,
+    uppercase: true,
+  },
+  description:{
+    type: String,
+  } 
 });
 
 module.exports = mongoose.model('Category', Category);

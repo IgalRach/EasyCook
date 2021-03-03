@@ -1,89 +1,86 @@
-// const { ObjectId } = require('mongodb');
-// const Recipe = require('../models/recipe');
+const Recipe = require("../services/recipe");
 
-// const create = (req,res)=>{
-//     const recipe = new Recipe({ 
-//         recipeId:ObjectId,
-//         recipeTitle: req.body.recipeTitle,
-//         ingredients: req.body.ingredients,
-//         recipeProcess: req.body.recipeProcess,
-//        // type: req.body.type,
-//         //recipePicture:req.boby.recipePicture
-//     });
+// Getting All Recipes From the Database - Really Needed?
+exports.getAllRecepies = async (req, res) => {
+  var recipies = await Recipe.getAllRecepies();
+  try {
+    res.send(recipies);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
-//     recipe.save().then(() => {
-//         res.redirect('/recipes');
-//     }).catch(error => {
-//         res.send('failed');
-//     });
-// }
+// Create and Insert New Recipe to DB
+exports.createRecipe = async (req, res) => {
+  try {
+    var recipe = Recipe.createRecipe(req);
+    res.send(recipe);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
-// const get = (req,res)=>{
-//     Recipe.find().then(results => {
-//         res.json(results);
-//     });
-// }
+exports.updateRecipe = async (req, res) => {
+  try {
+    var recipe = Recipe.updateRecipe(req);
+    res.send(recipe);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
-// const getByTitle = (req,res)=>{
-//     Recipe.findOne({
-//         'title': { $regex: `.*${req.params.recipeTitle}.*` }
-//     }).then(recipe => {
-//         res.json(recipe);
-//     });
-// }
+exports.deleteRecipe = async (req, res) => {
+  try {
+    var recipe = Recipe.deleteRecipe(req);
+    res.send(recipe);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
-// const update =(req,res)=>{
-//     res.send('Put entry point');
-// }
+// Get all Comments of Specific Recipe
+exports.getRecipeComments = async (req, res) => {
+  var comments = await Recipe.getRecipeComments(req);
+  try {
+    if(comments) res.send(comments);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
-// const remove = (req,res)=>{
-//     res.send('Delete entry point');
-// }
-// module.exports ={create,get,getByTitle,update,remove}
+// Add Comment To Specific Recipe
+exports.addCommentToRecipe = async (req, res) => {
+  try {
+    Recipe.addCommentToRecipe(req);
+    return res.status(200).json({ message: "message received" });
+  } catch (error) {
+    console.log("error message:", error);
+    return res
+      .status(500)
+      .json({ message: "Oops... looks like something went wrong" });
+  }
+};
 
-const Recipe = require('../models/recipe');
-const mongoose = require('mongoose');
+// Getting Specific Recipe Fundamentals By Name From The API
+exports.getRecipeDataByName = async (req, res) => {
+  var recipeData = await Recipe.getDataRecipeByName(req);
+  res.send(recipeData);
+};
 
- const create = (req,res)=>{
-        const recipe = new Recipe({ 
-            id: new mongoose.Types.ObjectId(),
-            recipename: req.body.recipename,
-            description: req.body.description,
-            recipePic: req.body.recipePic,
-            keyword: req.body.keyword,
-            category: req.body.category,
-            createdBy: req.body.createdBy
-  });
+exports.getRecipeRatingById= async (req, res) => {
+  var recipeRating = await Recipe.getRecipeRatingById(req);
+  res.send(recipeRating);
+};
 
-  recipe.save()
-  .then(recipe => {
-      res.status(201).json({
-          message: recipe
-      });
-  })
-  .catch(er => {
-      res.status(500).json({
-          error: er
-      });
-  })
 
-}
+// Getting Specific Recipe Rating From API - NOT REAL TIME RATES
+exports.getTodayRecipeRatingByName = async (req, res) => {
+  var recipeRating = await Recipe.getTodayRecipeRatingByName(req);
+  res.send(recipeRating);
+};
 
- const get = (req,res)=>{
-    Recipe.find({})
-    .select('id name review recipePic ')
-    .exec()
-    .then(recipes => {
-        res.status(200).json({
-            message: recipes
-        });
-    })
-    .catch(er => {
-        res.status(500).json({
-            error: er
-        });
-    })
-
-}
-
-module.exports={create,get}
+// Getting Historical Recipe RatingFrom API - For Charts
+exports.getHistoricalRecipeRatingByName = async (req, res) => {
+  var recipeRating = await Recipe.getHistoricalRecipeRatingByName(req);
+  res.send(recipeRating);
+};

@@ -1,33 +1,27 @@
-// const express = require('express');
+const express = require("express");
+const router = express.Router();
 
-// const recipeController = require('../controllers/recipe')
+const RecipeController = require("../controllers/recipe");
 
-// var router = express.Router();
+router.get("/recipies", RecipeController.getAllRecepies);
+router.get("/recipies/:recipeName",RecipeController.getRecipeDataByName);
+router.get("/reciperating/:id", RecipeController.getRecipeRatingById);
+router.get("/recipies/:recipeName/comments", RecipeController.getRecipeComments);
+router.get(
+  "/recipies/reciperating/:recipeName",
+  RecipeController.getTodayRecipeRatingByName
+);
+router.get(
+  "/recipies/historicalreciperating/:recipeName",
+  RecipeController.getHistoricalRecipeRatingByName
+);
+
+router.post("/recipies", RecipeController.createRecipe);
+router.post("/recipies/:recipeName/comment", RecipeController.addCommentToRecipe);
+
+router.put("/recipies/update", RecipeController.updateRecipe);
+
+router.delete("/recipies/:recipeName", RecipeController.deleteRecipe);
 
 
-
-// router.get('/',recipeController.get);
-
-// router.get('/:recipeTitle', recipeController.getByTitle);
-
-// router.post('/',recipeController.create);
-
-// router.put('/', recipeController.update);
-
-// router.delete('/', recipeController.remove);
-
-
-// module.exports = router;
-
-const express = require('express');
-var router = express.Router();
-const authenticate = require('../controllers/authenticate');
- 
-const Recipe= require('../controllers/recipe');
-
-router.post('/create', Recipe.create);
-
-router.get('/', Recipe.get);
-
- 
 module.exports = router;

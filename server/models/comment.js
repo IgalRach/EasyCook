@@ -1,10 +1,20 @@
-const { ObjectId } = require('mongodb');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
 
-const Comment = new Schema({
-//AccountName: , need to take it from the account that connected
-commentbody: String
-})
+var Schema = mongoose.Schema;
 
-module.exports= mongoose.model('Comment', Comment);
+const Comment = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  comment: {
+    type: String,
+    default: "",
+  },
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+module.exports = mongoose.model("Comments",Comment);

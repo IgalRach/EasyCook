@@ -12,7 +12,8 @@ const create = (req,res)=>{
 }
 
 const get = (req,res)=>{
-    Recipe.find().then(results => {
+    Recipe.findOne()
+    .then(results => {
         res.json(results);
     });
 }
