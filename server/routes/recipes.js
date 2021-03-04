@@ -1,20 +1,29 @@
 const express = require('express');
 
-const recipeController = require('../controllers/recipe')
+const recipeController = require('../controllers/recipe');
 
 var router = express.Router();
 
+const Recipe = require('../models/recipe');
 
+router.get('/', recipeController.getRecipes);
 
-router.get('/',recipeController.get);
+router.get('/:title', (req, res) => {
+    Recipe.findOne({
+        'title': {
+            $regex: `.*${req.params.recipename}.*`
+        }
+    }).then(recipe => {
+        res.json(recipe);
+    })
+});
+//router.get('/:id', recipeController.getRecipeById);
 
-router.get('/:recipeTitle', recipeController.getByTitle);
+router.post('/', recipeController.createRecipe);
 
-router.post('/',recipeController.create);
+router.put('/', recipeController.updateRecipe);
 
-router.put('/', recipeController.update);
-
-router.delete('/', recipeController.remove);
+router.delete('/:id', recipeController.deleteRecipe);
 
 
 module.exports = router;

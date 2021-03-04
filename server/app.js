@@ -1,26 +1,18 @@
-const app = require('express')();
+const express = require('express');
+const app=express();
 const server =require('http').createServer(app);
 const socketIo = require('socket.io');
-
-
+const io = socketIo(server);
 const bodyParser = require('body-parser');
 
 const recipes = require('./routes/recipes');
 const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
+//const cookingTerms = require('./routes/')
 
-// var cors = require('cors'); 
-// app.use(cors());
-
-  const io = socketIo(server/*,{
-    cors:{
-        origins:['http://localhost:4200','http://localhost:3001'],
-        methods:["GET","POST"],
-        credentials:false
-    }
-  }*/);
-
-
+var cors = require('cors'); 
+app.use(cors());
+    
 //--------------------------------Database Connection--------------------------------------------------
 const mongoose = require('mongoose');
 const { isObject } = require('util');
@@ -34,15 +26,18 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use('/recipes', recipes);
 app.use('/accounts', accounts);
 app.use('/comments', comments);
 
 
+
+
 //counting the users that connected to the site.
 var count=0;
 io.on('connection', (socket) => {
-    if (socket.handshake.headers.origin === 'http://localhost:3001') {
+    if (socket.handshake.headers.origin === 'http://localhost:3000') {
         count++;
         socket.broadcast.emit('count',count);
 

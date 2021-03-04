@@ -1,13 +1,25 @@
-const { ObjectId } = require('mongodb');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
 
-const Recipe = new Schema({
-   // recipeId:ObjectId,
-    recipeTitle: String,
-    ingredients: String,
-    recipeProcess:String,
-   // recipeImg : String
-})
+var Schema = mongoose.Schema;
 
-module.exports= mongoose.model('Recipe', Recipe)
+const Recipe = new mongoose.Schema({
+  recipename: {
+    type: String,
+    required: true,
+    unique:true,
+  },
+  description:{
+    type: String,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    requred: true,
+    ref:"Category"
+  },
+  recipePic:{img: String},
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
+  rating: [{ type: Schema.Types.ObjectId, ref: "Rating" }],
+});
+
+module.exports = mongoose.model('Recipe', Recipe);
+

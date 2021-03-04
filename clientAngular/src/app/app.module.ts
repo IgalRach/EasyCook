@@ -8,13 +8,19 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { UsersCounterComponent } from './users-counter/users-counter.component';
 
 import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 const config: SocketIoConfig = {url:'http://localhost:8082',options:{}};
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipesComponent,
-    UsersCounterComponent
+    UsersCounterComponent,
+    FooterComponent,
+    HeaderComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
