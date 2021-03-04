@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const recipes = require('./routes/recipes');
 const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
+const cookingTerms = require('./routes/cookingTerms');
+
 //const cookingTerms = require('./routes/')
 
 var cors = require('cors'); 
@@ -30,9 +32,14 @@ app.use(express.json());
 app.use('/recipes', recipes);
 app.use('/accounts', accounts);
 app.use('/comments', comments);
+app.use('/cookingTerms',cookingTerms);
 
 
 
+
+const commentModel = require("./models/comment");
+const recipeModel = require("./models/recipe");
+const cookingTerm = require('./models/cookingTerm');
 
 //counting the users that connected to the site.
 var count=0;
@@ -49,6 +56,34 @@ io.on('connection', (socket) => {
             console.log(count);
         });
     }
+    socket.on("new-comment", (username, comment, recipename) => {
+        // create a new message and save
+        let newComment = new commentModel({ username, comment });
+        let id = newComment._id;
+        let time = newComment.created;
+        newComment = newComment.save();
+  
+        // get the associated user and add new message to user's messages array
+        var recipe = recipeModel.findOne({ name: recipename }).then((doc)=>{
+          if(!doc){
+            let newStock = new recipeModel({ name: recipename});
+            newStock.comments.push(id);
+            newStock.save();
+          }      
+          else{
+            doc.comments.push(id);
+            doc.save();
+          }
+        });
+  
+        io.emit("comment", {
+          username: username,
+          comment: comment,
+          created: time,
+          recipename: recipename,
+        });
+      });
+
 });
 
 

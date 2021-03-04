@@ -4,22 +4,14 @@ const recipeController = require('../controllers/recipe');
 
 var router = express.Router();
 
-const Recipe = require('../models/recipe');
 
-router.get('/', recipeController.getRecipes);
 
-router.get('/:title', (req, res) => {
-    Recipe.findOne({
-        'title': {
-            $regex: `.*${req.params.recipename}.*`
-        }
-    }).then(recipe => {
-        res.json(recipe);
-    })
-});
-//router.get('/:id', recipeController.getRecipeById);
+router.get('/',recipeController.getRecipes);
 
-router.post('/', recipeController.createRecipe);
+router.get('/title/:recipename', recipeController.getRecipeByTitle);
+router.get('/:id', recipeController.getRecipeById);
+
+router.post('/',recipeController.createRecipe);
 
 router.put('/', recipeController.updateRecipe);
 

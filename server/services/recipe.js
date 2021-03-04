@@ -27,26 +27,23 @@ const getRecipes = async () => {
 }
 
 const getRecipeByTitle = async (req) => {
-    var recipename = req.params.recipename;
-    const recipe = await Recipe.findOne({ title: recipename }, (err, doc) => {
-        if (err) {
-            console.log("Something wrong when getting data!");
-        }
-    });
+    const recipe = await Recipe.find({
+        'recipename': { $regex: `.*${req.params.recipename}.*` }
+    })
     return recipe;
 }
 
 //need to fix
 const updateRecipe = async (req) => {
-    var updetedrecipe =req.body.recipe;
-    var name=req.body.recipename;
-    var des=req.body.description;
-    var pic=req.body.recipePic;
-    Recipe.findOne({title:updetedrecipe},{title:name,description:des,recipePic:pic},function (err, term) {
+    var updetedrecipe = req.body.recipe;
+    var name = req.body.recipename;
+    var des = req.body.description;
+    var pic = req.body.recipePic;
+    Recipe.findOne({ title: updetedrecipe }, { title: name, description: des, recipePic: pic }, function (err, term) {
         if (err) console.log(err);
         console.log("TERM UPDATED");
         return term;
-      });
+    });
 }
 
 

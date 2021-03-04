@@ -29,17 +29,16 @@ const getRecipeById= async (req,res)=>{
 
 
 const getRecipeByTitle = async (req,res)=>{
-    // const recipe= await RecipeService.getRecipeByTitle(req);
-    // try {
-    //     res.json(recipe);
-    // } catch (err) {}
-    var recipe = await RecipeService.getRecipeByTitle(req);
+
+    const recipe= await RecipeService.getRecipeByTitle(req);
     try {
-      res.json(recipe);
-    } catch (err) {
-      res.status(500).send(err);
+        res.json(recipe);
+    } catch (error) {
+        
     }
 }
+
+
 
 const updateRecipe = async (req, res) => {
     var recipe = await TermService.updateRecipe(req);
