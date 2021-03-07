@@ -8,12 +8,12 @@ var router = express.Router();
 
 router.get('/',recipeController.getRecipes);
 
-router.get('/title/:recipename', recipeController.getRecipeByTitle);
+router.get('/recipe/:recipename', recipeController.getRecipeByTitle);
 router.get('/:id', recipeController.getRecipeById);
 
 router.post('/',recipeController.createRecipe);
 
-router.put('/', recipeController.updateRecipe);
+router.put('/:id', recipeController.updateRecipe);
 
 router.delete('/:id', recipeController.deleteRecipe);
 

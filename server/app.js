@@ -6,6 +6,7 @@ const io = socketIo(server);
 const bodyParser = require('body-parser');
 
 const recipes = require('./routes/recipes');
+const categories = require('./routes/categories');
 const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
 const cookingTerms = require('./routes/cookingTerms');
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use('/recipes', recipes);
 app.use('/accounts', accounts);
 app.use('/comments', comments);
+app.use('/categories', categories);
 app.use('/cookingTerms',cookingTerms);
 
 

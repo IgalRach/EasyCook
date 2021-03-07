@@ -37,11 +37,41 @@ const getRecipeByTitle = async (req,res)=>{
         
     }
 }
+const getCategoryRecipes = async (req,res)=>{
 
+    const recipes= await RecipeService.getCategoryRecipes(req);
+    try {
+        res.json(recipes);
+    } catch (error) {
+        
+    }
+}
 
+//need to be checked
+const getComments= async(req,res)=>{
+    // var comments = await StockService.getStockComments(req);
+    // try {
+    //   if(comments){
+    //       comments.exec(function(err,docs){
+    //         if (err) {
+    //             console.error(err.stack|| err);
+    //         }
+    //         res.json(docs.Comments);
+    //     });
+    //   }
+    // } catch (err) {
+    //   res.status(500).send(err);
+    // }
+    var comments = await RecipeService.getComments(req);
+    try {
+      if(comments) res.send(comments);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+}
 
 const updateRecipe = async (req, res) => {
-    var recipe = await TermService.updateRecipe(req);
+    var recipe = await RecipeService.updateRecipe(req.params.id);
     try {
       res.send(recipe);
     } catch (err) {
@@ -60,6 +90,8 @@ module.exports ={createRecipe,
     getRecipes,
     getRecipeById,
     getRecipeByTitle,
+    getCategoryRecipes,
+    getComments,
     updateRecipe,
     deleteRecipe
 };

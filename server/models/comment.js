@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 const Comment = new mongoose.Schema({
-  username: {
+  userEmail: {//need to change to username
     type: String,
     required: true,
   },
@@ -25,6 +25,10 @@ const Comment = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  recipe:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Recipe"
+  }
 });
 
 module.exports = mongoose.model("Comments",Comment);

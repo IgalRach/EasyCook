@@ -7,7 +7,9 @@ var router = express.Router();
 // const CookingTerm = require('../models/cookingTerm');
 
 router.get('/', cookingTermsController.getCookingTerms);
-router.get('/title/:title', cookingTermsController.getCookingTermByName);
+
+//need to check.
+router.get('/recipe/:title', cookingTermsController.getCookingTermByName);
 
 router.get('/:id', cookingTermsController.getCookingTermById);
 
