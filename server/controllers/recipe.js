@@ -24,9 +24,17 @@ const get = (req,res)=>{
     });
 }
 
+// const getByTitle = (req,res)=>{
+//     Recipe.findOne({
+//         'title': { $regex: `.*${req.params.recipeTitle}.*` }
+//     }).then(recipe => {
+//         res.json(recipe);
+//     });
+// }
+
 const getByTitle = (req,res)=>{
-    Recipe.find({
-        'title': { $regex: `.*${req.params.recipeTitle}.*` }
+    Recipe.findOne({
+        'title': req.params.recipeTitle
     }).then(recipe => {
         res.json(recipe);
     });

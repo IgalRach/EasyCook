@@ -62,8 +62,8 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-            {/* <script>
-            const password = prompt("Please enter your password");
+            <script>
+            {/* const password = prompt("Please enter your password");
             if (password=="1234") {
                 //location = "media.html"
             
@@ -72,8 +72,8 @@ export default function Header() {
             {
             document.getElementById("msg").value = "test";  
                 //location = "error.html"
-            }
-            </script> */}
+            } */}
+            </script>
         </header>
         );
 }
