@@ -1,8 +1,19 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 
 
 
 export default function Header() {
+    
+    const history = useHistory();
+
+    const doSearch = (e) => {
+        if(e.target.value === "")
+            history.push('/');
+        else 
+            history.push('/search?q='+ e.target.value);
+    }
+
     return (
         <header className="header-area">
             {/* Top Header Area */}
@@ -19,7 +30,7 @@ export default function Header() {
                         {/* Menu */}
                         <nav className="classy-navbar justify-content-between" id="deliciousNav">
                             {/* Logo */}
-                            <a className="nav-brand" href="index.html"><img src="img/core-img/easyCookLogo.png" alt="" /></a>
+                            <Link className="nav-brand" to="/"><img src="img/core-img/easyCookLogo.png" alt="" /></Link>
                             {/* Navbar Toggler */}
                             <div className="classy-navbar-toggler">
                                 <span className="navbarToggler"><span /><span /><span /></span>
@@ -33,15 +44,17 @@ export default function Header() {
                                 {/* Nav Start */}
                                 <div className="classynav">
                                     <ul>
-                                        <li className="active"><a href="index.html">Home</a></li>
-                                        <li><a href="receipe-post.html">Receipies</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><Link to="/">Home</Link></li>
+                                        <li><Link to="/about">About Us</Link></li>
+                                        <li><Link to="/recipes">Recipes</Link></li>
+                                        <li><Link to="/contact">Contact</Link></li>
                                     </ul>
                                     {/* Newsletter Form */}
                                     <div className="search-btn">
-                                    <input style={{ border:"none" }} className="navBtn" type="search" name="search" placeholder="Type any keywords..." />
+                                    <input style={{ border:"none" }} className="navBtn" type="search" name="search" placeholder="Type any keywords..." onChange={doSearch} />
                                         <i className="fa fa-search" type="submit" aria-hidden="true" />
                                     </div>
+                                    <button className="btn" style={{backgroundColor: "#40ba37",color: "white",fontweight: "600",textTransform: "uppercase",marginLeft: "8px"}} >Admin</button>
                                 </div>
                                 {/* Nav End */}
                             </div>
@@ -49,6 +62,18 @@ export default function Header() {
                     </div>
                 </div>
             </div>
+            <script>
+            {/* const password = prompt("Please enter your password");
+            if (password=="1234") {
+                //location = "media.html"
+            
+            }
+            else 
+            {
+            document.getElementById("msg").value = "test";  
+                //location = "error.html"
+            } */}
+            </script>
         </header>
         );
 }

@@ -19,7 +19,7 @@ export default function Footer() {
                         </div>
                         {/* Footer Logo */}
                         <div className="footer-logo">
-                            <a href="index.html"><img src="img/core-img/easyCookLogo.png" alt="" /></a>
+                            <a href="/"><img src="img/core-img/easyCookLogo.png" alt="" /></a>
                         </div>
                         {/* Copywrite */}
                         <p>{/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
