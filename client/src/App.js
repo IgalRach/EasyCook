@@ -1,13 +1,25 @@
 import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+<<<<<<< HEAD
 import Header from './Components/header';
 import Footer from './Components/footer';
+=======
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+>>>>>>> origin/main
 import ContactPage from './Components/Pages/ContactPage';
 import RecipesPage from './Components/Pages/RecipesPage';
 import HomePage from './Components/Pages/HomePage';
 import AboutPage from './Components/Pages/AboutPage';
 import DetailsPage from './Components/Pages/DetailsPage';
 import Search from './Components/search';
+<<<<<<< HEAD
+=======
+import io from "socket.io-client";
+
+
+const socket= io.connect("http://localhost:8082");
+>>>>>>> origin/main
 
 export default function App() {
   return (
