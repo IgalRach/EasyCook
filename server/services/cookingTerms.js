@@ -26,15 +26,23 @@ const getCookingTermsById = async (id) => {
 }
 
 //update -needs to be checked
-const updateCookingTerm = async (req) => {
-  var termChange = req.body.term;
-  var name = req.body.title;
-  var des = req.body.description;
-  cookingTermModel.updateOne({ title: termChange }, { title: name, description: des }, function (err, term) {
-    if (err) console.log(err);
-    console.log("Cooking term updated");
-    return term;
-  });
+const updateCookingTerm = async (id,title,description) => {
+  // var termChange = req.body.term;
+  // var name = req.body.title;
+  // var des = req.body.description;
+  // cookingTermModel.updateOne({ title: termChange }, { title: name, description: des }, function (err, term) {
+  //   if (err) console.log(err);
+  //   console.log("Cooking term updated");
+  //   return term;
+  // });
+  const cookingTerm = await getCookingTermsById(id);
+  if (!cookingTerm)
+      return null;
+
+      cookingTerm.title = title;
+      cookingTerm.description= description;
+  await cookingTerm.save();
+  return cookingTerm;
 };
 
 const getCookingTermByName = async (req) => {

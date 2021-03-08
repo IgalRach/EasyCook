@@ -13,7 +13,7 @@ const create = (req,res)=>{
     });
 
     comment.save().then(newComment => {
-        Recipe.findOneAndUpdate({ recipeid: req.body.recipeid }, {
+        Recipe.findOneAndUpdate({ recipe: req.body.recipeid }, {
             $push: {
                 comments: {
                     $each: [newComment],

@@ -1,4 +1,5 @@
 const CookingTerms = require("../services/cookingTerms");
+const Scrape = require("../services/scraper");
 
 //create
 const createCookingTerm = async (req, res) => {
@@ -45,17 +46,29 @@ const getCookingTermByName = async (req,res)=>{
 
 //update
 const updateCookingTerm = async (req, res) => {
-  var cookingTerm = await CookingTerms.updateCookingTerm(req);
-  try {
-    res.send(cookingTerm);
-  } catch (err) {
-    res.status(500).send(err);
+  // var cookingTerm = await CookingTerms.updateCookingTerm(req);
+  // try {
+  //   res.send(cookingTerm);
+  // } catch (err) {
+  //   res.status(500).send(err);
+  // }
+
+  const cookingterm = await CookingTerms.updateCookingTerm(req.params.id, req.body.title,req.body.description);
+  if (!cookingterm) {
+    return res.status(404).json({ errors: ['Article not found'] });
   }
+
+  res.json(cookingterm);
 };
 
 //remove
 const deleteCookingTerm = async (req,res)=>{
     const cookingTerm = await CookingTerms.deleteCookingTerm(req.params.id);
+    res.send();
+  }
+
+  const scrape = async (req,res)=>{
+    Scrape.scrape();
     res.send();
   }
   
@@ -65,6 +78,7 @@ const deleteCookingTerm = async (req,res)=>{
       getCookingTermById,
       getCookingTermByName,
       updateCookingTerm,
-      deleteCookingTerm
+      deleteCookingTerm,
+      scrape,
   }
   

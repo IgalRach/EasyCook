@@ -12,9 +12,9 @@ const Recipe = new mongoose.Schema({
     type: String,
   },
   category: {
-    // type: mongoose.Schema.Types.ObjectId,
-    // requred: true,
-    // ref:"Category"
+  // type: mongoose.Schema.Types.ObjectId,
+   //requred: true,
+//    ref:"Category"
     type:String,
   },
   recipePic:{type: String},//changed from

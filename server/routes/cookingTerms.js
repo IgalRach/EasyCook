@@ -9,13 +9,14 @@ var router = express.Router();
 router.get('/', cookingTermsController.getCookingTerms);
 
 //need to check.
-router.get('/recipe/:title', cookingTermsController.getCookingTermByName);
+router.get('/term/:title', cookingTermsController.getCookingTermByName);
 
 router.get('/:id', cookingTermsController.getCookingTermById);
+router.get('/scrape', cookingTermsController.scrape);
 
 router.post('/', cookingTermsController.createCookingTerm);
 
-router.put('/', cookingTermsController.updateCookingTerm);
+router.patch('/:id', cookingTermsController.updateCookingTerm);
 
 router.delete('/:id', cookingTermsController.deleteCookingTerm);
 

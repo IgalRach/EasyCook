@@ -19,8 +19,6 @@ const getRecipeById= async (req,res)=>{
     console.log(req.params.id);
     const recipe= await RecipeService.getRecipeById(req.params.id); 
     try {
-        console.log("houdhgoehgoer");
-
         res.json(recipe);
     } catch (err) {
         return res.status(404).json({errors:['recipe not found']});
@@ -41,10 +39,10 @@ const getCategoryRecipes = async (req,res)=>{
 
     const recipes= await RecipeService.getCategoryRecipes(req);
     try {
-        res.json(recipes);
+        //res.json(recipes);
     } catch (error) {
         
-    }
+   }
 }
 
 //need to be checked
