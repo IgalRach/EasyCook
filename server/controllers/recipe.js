@@ -69,6 +69,7 @@ const getComments= async(req,res)=>{
 }
 
 const updateRecipe = async (req, res) => {
+    
     var recipe = await RecipeService.updateRecipe(req.params.id);
     try {
       res.send(recipe);

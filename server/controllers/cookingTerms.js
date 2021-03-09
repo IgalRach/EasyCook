@@ -46,16 +46,10 @@ const getCookingTermByName = async (req,res)=>{
 
 //update
 const updateCookingTerm = async (req, res) => {
-  // var cookingTerm = await CookingTerms.updateCookingTerm(req);
-  // try {
-  //   res.send(cookingTerm);
-  // } catch (err) {
-  //   res.status(500).send(err);
-  // }
 
-  const cookingterm = await CookingTerms.updateCookingTerm(req.params.id, req.body.title,req.body.description);
+  const cookingterm = await CookingTerms.updateCookingTerm(req);
   if (!cookingterm) {
-    return res.status(404).json({ errors: ['Article not found'] });
+    return res.status(404).json({ errors: ['cooking term not found'] });
   }
 
   res.json(cookingterm);

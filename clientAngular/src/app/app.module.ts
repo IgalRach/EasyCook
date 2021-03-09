@@ -8,26 +8,28 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { UsersCounterComponent } from './users-counter/users-counter.component';
 
 import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
-import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-const config: SocketIoConfig = {url:'http://localhost:8082',options:{}};
+// import { CookingTermComponent } from './models/cooking-term/cooking-term.component';
+// import { RecipeComponent } from './models/recipe/recipe.component';
+// import { CategoryComponent } from './models/category/category.component';
+import { LayoutsModule } from './layouts/layouts.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddCookingTermComponent } from './add-cooking-term/add-cooking-term.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipesComponent,
-    UsersCounterComponent,
-    FooterComponent,
-    HeaderComponent,
-    SideNavComponent
+    AddCookingTermComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
-  ],
+    LayoutsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

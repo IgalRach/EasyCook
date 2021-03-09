@@ -1,0 +1,7 @@
+a:focus {     
+    background-color:darkgray;    
+    color: #fff;
+} 
+a:hover{
+    background-color:darkgray; 
+}

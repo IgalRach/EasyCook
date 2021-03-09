@@ -12,8 +12,6 @@ const createCookingTerm = async (req) => {
   });
 }
 
-
-
 //get
 const getCookingTerms = async () => {
   const terms = await cookingTermModel.find({});
@@ -26,21 +24,14 @@ const getCookingTermsById = async (id) => {
 }
 
 //update -needs to be checked
-const updateCookingTerm = async (id,title,description) => {
-  // var termChange = req.body.term;
-  // var name = req.body.title;
-  // var des = req.body.description;
-  // cookingTermModel.updateOne({ title: termChange }, { title: name, description: des }, function (err, term) {
-  //   if (err) console.log(err);
-  //   console.log("Cooking term updated");
-  //   return term;
-  // });
-  const cookingTerm = await getCookingTermsById(id);
+const updateCookingTerm = async (req) => {
+  const cookingTerm = await getCookingTermsById(req.params.id);
   if (!cookingTerm)
       return null;
 
-      cookingTerm.title = title;
-      cookingTerm.description= description;
+      cookingTerm.title = req.body.title;
+      
+      cookingTerm.description= req.body.description;
   await cookingTerm.save();
   return cookingTerm;
 };

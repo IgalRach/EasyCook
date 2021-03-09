@@ -11,7 +11,6 @@ const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
 const cookingTerms = require('./routes/cookingTerms');
 
-//const cookingTerms = require('./routes/')
 
 var cors = require('cors');
 app.use(cors());

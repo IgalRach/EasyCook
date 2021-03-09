@@ -43,7 +43,4 @@ export class RecipesService {
   //     companyrank
   //   });
   // }
-  scrape(): Observable<any>{
-    return this.http.get(`http://localhost:5000/stocks/scrape`);
-  }
 }
