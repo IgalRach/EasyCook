@@ -12,13 +12,7 @@ router.get('/recipe/:recipename', recipeController.getRecipeByTitle);
 router.get('/:id', recipeController.getRecipeById);
 //router.get('/cateory/', recipeController.getCategoryRecipes);
 
-<<<<<<< HEAD
-router.get('/:recipeId', recipeController.getById);
-
-router.post('/',recipeController.create);
-=======
 router.post('/',recipeController.createRecipe);
->>>>>>> origin/main
 
 router.put('/:id', recipeController.updateRecipe);
 

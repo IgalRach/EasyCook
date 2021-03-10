@@ -15,20 +15,6 @@ const getRecipes = async (req,res)=>{
     
 }
 
-<<<<<<< HEAD
-// const getByTitle = (req,res)=>{
-//     Recipe.findOne({
-//         'title': { $regex: `.*${req.params.recipeTitle}.*` }
-//     }).then(recipe => {
-//         res.json(recipe);
-//     });
-// }
-
-const getByTitle = (req,res)=>{
-    Recipe.findOne({
-        'title': req.params.recipeTitle
-    }).then(recipe => {
-=======
 const getRecipeById= async (req,res)=>{
     console.log(req.params.id);
     const recipe= await RecipeService.getRecipeById(req.params.id); 
@@ -44,7 +30,6 @@ const getRecipeByTitle = async (req,res)=>{
 
     const recipe= await RecipeService.getRecipeByTitle(req);
     try {
->>>>>>> origin/main
         res.json(recipe);
     } catch (error) {
         
@@ -52,23 +37,12 @@ const getRecipeByTitle = async (req,res)=>{
 }
 const getCategoryRecipes = async (req,res)=>{
 
-<<<<<<< HEAD
-const getById = (req,res)=>{
-    Recipe.findById(req.params.recipeId).then(recipe => {
-        res.json(recipe);
-    });
-}
-
-const update =(req,res)=>{
-    res.send('Put entry point');
-=======
     const recipes= await RecipeService.getCategoryRecipes(req);
     try {
         //res.json(recipes);
     } catch (error) {
         
    }
->>>>>>> origin/main
 }
 
 //need to be checked
@@ -93,9 +67,6 @@ const getComments= async(req,res)=>{
       res.status(500).send(err);
     }
 }
-<<<<<<< HEAD
-module.exports ={create,get,getByTitle,getById,update,remove}
-=======
 
 const updateRecipe = async (req, res) => {
     var recipe = await RecipeService.updateRecipe(req.params.id);
@@ -122,4 +93,3 @@ module.exports ={createRecipe,
     updateRecipe,
     deleteRecipe
 };
->>>>>>> origin/main

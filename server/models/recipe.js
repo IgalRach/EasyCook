@@ -19,6 +19,10 @@ const Recipe = new mongoose.Schema({
   },
   recipePic:{type: String},//changed from
   comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
+  created: {
+    type: Date,
+    default: Date.now,
+  },
   //rating: [{ type: Schema.Types.ObjectId, ref: "Rating" }],
 });
 

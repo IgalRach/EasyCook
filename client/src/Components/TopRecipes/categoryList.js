@@ -4,15 +4,11 @@ import TopCategoryItem from './topCategoryItem';
 
 export default function CategoryList({q=''}) {
 
-    const [items, setItems] = React.useState([]); //default is empty array
+    const [items, setItems] = React.useState([]); 
     
     React.useEffect(()=>{
 
-        // let url = 'http://localhost:8082/recipes';
-        // if (q !== null && q !== "")
-        //     url += '/title/' + q;
-
-        fetch('http://localhost:8082/recipes'+q)
+        fetch('http://localhost:8082/recipes/'+q)
         .then((response) => response.json())
         .then((data) => setItems(data));
     
@@ -25,7 +21,7 @@ export default function CategoryList({q=''}) {
         <div className="row">
             {
                 items.map((data, key) => {
-                    return <TopCategoryItem name={data.recipeTitle} key={key} />
+                    return <TopCategoryItem name={data.recipename} img={data.recipePic} category={data.category} key={key} />
                 })
             }
         </div>

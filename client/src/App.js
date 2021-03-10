@@ -1,25 +1,18 @@
 import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-<<<<<<< HEAD
 import Header from './Components/header';
 import Footer from './Components/footer';
-=======
-import Header from './Components/Header';
-import Footer from './Components/Footer';
->>>>>>> origin/main
 import ContactPage from './Components/Pages/ContactPage';
 import RecipesPage from './Components/Pages/RecipesPage';
 import HomePage from './Components/Pages/HomePage';
 import AboutPage from './Components/Pages/AboutPage';
 import DetailsPage from './Components/Pages/DetailsPage';
+import CookingPage from './Components/Pages/CookingPage';
 import Search from './Components/search';
-<<<<<<< HEAD
-=======
 import io from "socket.io-client";
 
 
 const socket= io.connect("http://localhost:8082");
->>>>>>> origin/main
 
 export default function App() {
   return (
@@ -37,7 +30,8 @@ export default function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/about" exact component={AboutPage} />
           <Route path="/recipes" exact component={RecipesPage} />
-          <Route path="/recipes/recipe" exact component={DetailsPage} />
+          <Route path="/recipes/:id" exact component={DetailsPage} />
+          <Route path="/cookingTerms" exact component={CookingPage} />
           <Route path="/contact" exact component={ContactPage} />
           <Route path="/search" exact component={() => <Search />} />
         </Switch>

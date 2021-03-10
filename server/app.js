@@ -1,10 +1,4 @@
 const express = require('express');
-<<<<<<< HEAD
-const bodyParser = require('body-parser');
-var cors = require('cors');
-const app = express();
-app.use(cors());
-=======
 const app = express();
 const server = require('http').createServer(app);
 const socketIo = require('socket.io');
@@ -17,39 +11,19 @@ const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
 const cookingTerms = require('./routes/cookingTerms');
 
-//const cookingTerms = require('./routes/')
 
 var cors = require('cors');
 app.use(cors());
 
->>>>>>> origin/main
 //--------------------------------Database Connection--------------------------------------------------
 const mongoose = require('mongoose');
 const { isObject } = require('util');
 const connectionString = ("mongodb+srv://easycook:asd123@easycook.8bkru.mongodb.net/<easycook>?retryWrites=true&w=majority");
 
-<<<<<<< HEAD
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-//-----------------------------------End of Database Connection----------------------------------------
-const recipes = require('./routes/recipes');
-const geners = require('./routes/geners');
-const accounts = require('./routes/accounts');
-const comments = require('./routes/comments');
-=======
 mongoose.connect(connectionString, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //-----------------------------------End of Database Connection----------------------------------------
->>>>>>> origin/main
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/recipes', recipes);
-app.use('/accounts', accounts);
-app.use('/geners', geners);
-app.use('/comments', comments);
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());

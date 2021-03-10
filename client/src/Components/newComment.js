@@ -4,6 +4,20 @@ import React from "react";
 
 export default function NewComment(comments, setComments) {
    
+    // const [comments, setComments] = React.useState(null);
+    
+
+    // React.useEffect(() => {
+    //     const index = window.location.toString().lastIndexOf('/')+1;
+    //     const id = window.location.toString().substring(index);
+     
+
+    //     fetch('http://localhost:8082/recipes/' + id)
+    //     .then(response => response.json())
+    //     .then(data => setRecipesDetails(data)
+    //     )
+    // },[]) 
+
    const onClick = () => {
        fetch('http://localhost:8082/recipes', {
            method : 'POST',

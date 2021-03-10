@@ -1,19 +1,24 @@
 import React from "react";
-import NewComment from "./newComment";
-import CommentList from "./commentList"
-
 
 
 export default function Recipe() {
    
-    const [comments, setComments] = React.useState([]);
-   
+    const [recipesDetails, setRecipesDetails] = React.useState(null);
+    
+
     React.useEffect(() => {
-        fetch('http://localhost:8082/recipes')
-        .then(response => response.json()).then(
-            data => setComments(data)
+        const index = window.location.toString().lastIndexOf('/')+1;
+        const id = window.location.toString().substring(index);
+     
+
+        fetch('http://localhost:8082/recipes/' + id)
+        .then(response => response.json())
+        .then(data => setRecipesDetails(data)
         )
     },[]) 
+
+    if (recipesDetails === null)
+        return "";
 
     return (
         <>
@@ -22,10 +27,10 @@ export default function Recipe() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <div className="receipe-slider owl-carousel">
-                                <img src="img/bg-img/bg5.jpg" alt="" />
-                                <img src="img/bg-img/bg5.jpg" alt="" />
-                                <img src="img/bg-img/bg5.jpg" alt="" />
+                            <div className="receipe-slider owl-carousel" style={{display: "block"}}> 
+                                <img src={recipesDetails.recipePic} alt="" />
+                                {/* <img src={recipesDetails.recipePic} alt="" />
+                                <img src={recipesDetails.recipePic} alt="" /> */}
                             </div>
                         </div>
                     </div>
@@ -37,7 +42,7 @@ export default function Recipe() {
                             <div className="col-12 col-md-8">
                                 <div className="receipe-headline my-5">
                                     <span>April 05, 2018</span>
-                                    <h2>Vegetarian cheese salad</h2>
+                                    <h2>{recipesDetails.recipename}</h2>
                                     <div className="receipe-duration">
                                         <h6>Prep: 15 mins</h6>
                                         <h6>Cook: 30 mins</h6>
@@ -47,39 +52,34 @@ export default function Recipe() {
                             </div>
                             <div className="col-12 col-md-4">
                                 <div className="receipe-ratings text-right my-5">
-                                    <div className="ratings">
-                                        <i className="fa fa-star" aria-hidden="true" />
-                                        <i className="fa fa-star" aria-hidden="true" />
-                                        <i className="fa fa-star" aria-hidden="true" />
-                                        <i className="fa fa-star" aria-hidden="true" />
-                                        <i className="fa fa-star-o" aria-hidden="true" />
-                                    </div>
-                                    <a href="#" className="btn delicious-btn">For Begginers</a>
+                                    <a href="#" className="btn delicious-btn">For more recipes in {recipesDetails.category}</a>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-12 col-lg-8">
-                                {/* Single Preparation Step */}
+                                                
                                 <div className="single-preparation-step d-flex">
                                     <h4>01.</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                                 </div>
-                                {/* Single Preparation Step */}
+                               
                                 <div className="single-preparation-step d-flex">
                                     <h4>02.</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                                 </div>
-                                {/* Single Preparation Step */}
+                        
                                 <div className="single-preparation-step d-flex">
                                     <h4>03.</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                                 </div>
-                                {/* Single Preparation Step */}
+                    
                                 <div className="single-preparation-step d-flex">
                                     <h4>04.</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                                 </div>
+
+                                {/* <div>{recipesDetails.ingredients}</div> */}
                             </div>
                             {/* Ingredients */}
                             <div className="col-12 col-lg-4">
@@ -135,8 +135,8 @@ export default function Recipe() {
                                 </div>
                             </div>
                         </div>
-                        <NewComment comments={comments} setComments={setComments}/>
-                        <CommentList  comments={comments}/>
+                        {/* <NewComment comments={comments} setComments={setComments}/>
+                        <CommentList  comments={comments}/> */}
                     </div>
                 </div>
             </div>
