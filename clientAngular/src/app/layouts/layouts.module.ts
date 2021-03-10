@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CookingTermService } from '../services/cooking-term.service';
+import { NewrecipeComponent } from '../models/newrecipe/newrecipe.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CookingTermService } from '../services/cooking-term.service';
     LayoutsComponent,
     CookingTermComponent,
     RecipesComponent,
-    CategoryComponent
+    CategoryComponent,
+    NewrecipeComponent
   ],
   imports: [
     CommonModule,

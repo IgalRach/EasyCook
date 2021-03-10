@@ -60,18 +60,17 @@ const getCategoryRecipes = async (req) => {
 
 //need to fix
 const updateRecipe = async (req) => {
-    const recipe = await Recipe.findById(req);
-    var updetedrecipe = recipe;
+    const recipe = await Recipe.findById(req.params.id);
+    if(!recipe){
+        return null;
+    }
+    recipe.recipename=req.body.recipename;
+    recipe.description=req.body.description;
+    recipe.category=req.body.category;
+    recipe.recipePic=req.body.recipePic;
+    await recipe.save();
+    return recipe;
 
-    var name = recipe.body.recipename;
-    var des = recipe.body.description;
-    var pic = recipe.body.recipePic;
-    Recipe.findOne({ recipename: updetedrecipe }, { recipename: name, description: des, recipePic: pic }
-        , function (err, term) {
-            if (err) console.log(err);
-            console.log("TERM UPDATED");
-            return term;
-        });
 }
 
 

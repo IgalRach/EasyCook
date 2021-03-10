@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { LayoutsComponent } from './layouts/layouts.component';
 import { CategoryComponent } from './models/category/category.component';
 import { CookingTermComponent } from './models/cooking-term/cooking-term.component';
-import { RecipeComponent } from './models/recipe/recipe.component';
+import { NewrecipeComponent } from './models/newrecipe/newrecipe.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,7 +13,7 @@ const routes: Routes = [{
   children: [
     {
       path: 'recipes',
-      component: RecipeComponent,
+      component: NewrecipeComponent,
     },
     {
       path: 'cookingTerms',

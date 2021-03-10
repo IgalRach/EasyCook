@@ -18,7 +18,7 @@ const getRecipes = async (req,res)=>{
 const getRecipeById= async (req,res)=>{
     console.log(req.params.id);
     const recipe= await RecipeService.getRecipeById(req.params.id); 
-    try {
+    try {       
         res.json(recipe);
     } catch (err) {
         return res.status(404).json({errors:['recipe not found']});
@@ -47,19 +47,6 @@ const getCategoryRecipes = async (req,res)=>{
 
 //need to be checked
 const getComments= async(req,res)=>{
-    // var comments = await StockService.getStockComments(req);
-    // try {
-    //   if(comments){
-    //       comments.exec(function(err,docs){
-    //         if (err) {
-    //             console.error(err.stack|| err);
-    //         }
-    //         res.json(docs.Comments);
-    //     });
-    //   }
-    // } catch (err) {
-    //   res.status(500).send(err);
-    // }
     var comments = await RecipeService.getComments(req);
     try {
       if(comments) res.send(comments);
@@ -70,9 +57,9 @@ const getComments= async(req,res)=>{
 
 const updateRecipe = async (req, res) => {
     
-    var recipe = await RecipeService.updateRecipe(req.params.id);
+    var recipe = await RecipeService.updateRecipe(req);
     try {
-      res.send(recipe);
+      res.json(recipe);
     } catch (err) {
       res.status(500).send(err);
     }

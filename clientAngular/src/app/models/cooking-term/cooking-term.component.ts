@@ -1,8 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AddCookingTermComponent } from "../../add-cooking-term/add-cooking-term.component";
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { CookingTermService } from '../../services/cooking-term.service';
-import { MatTableDataSource } from '@angular/material/table'
 import { CookingTerm } from '../cookingTerm'
 
 
@@ -13,10 +10,13 @@ import { CookingTerm } from '../cookingTerm'
 })
 export class CookingTermComponent implements OnInit {
 
+  @Output() refresh = new EventEmitter<string>();
+
   cookingTermArr: Array<CookingTerm>;
-  @Input() editTitle="Test title"; 
-  @Input() editDes="Test body"; 
+  @Input() Title=""; 
+  @Input() Des=""; 
   show=false;
+  showAd=false;
   term:string="";
 
   constructor(private service: CookingTermService) {
@@ -38,25 +38,48 @@ export class CookingTermComponent implements OnInit {
     );
   }
 
-  editTerm(cookingTerm:CookingTerm) {
-    console.log("succsess");
-    this.service.updateCookingTerm(cookingTerm,this.editTitle,this.editDes).subscribe(
+
+  addCookingterm(){
+    this.service.createCookingTerm(this.Title,this.Des).subscribe(
       (data: any) => {
         console.log("succsess");
-        this.show=false;
+        this.showAd=false;
+        this.createTable();
       }
     );
   }
 
+  editTerm(cookingTerm:CookingTerm) {
+    console.log("succsess");
+    this.service.updateCookingTerm(cookingTerm,this.Title,this.Des).subscribe(
+      (data: any) => {
+        console.log("succsess");
+        this.refresh.emit("Refresh");
+        this.show=false;
+        this.createTable();
+      }
+    );
+  }
+
+  showAdd(){
+    return this.showAd;
+  }
   showEdit(){
     return this.show;
   }
+
   startEditing(){
-    // this.show=!this.show;
     this.show=true;
   }
   stopEdit(){
     this.show=false;
+  }
+
+  startAdd(){
+    this.showAd=true;
+  }
+  stopAdd(){
+    this.showAd=false;
   }
 
 
@@ -66,19 +89,20 @@ export class CookingTermComponent implements OnInit {
       (data: any) => {
         console.log("successfuly deleted");
         this.createTable();
-
       }
-
     );
   }
 
 
-  // createCookingTerm(){
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-  //   dialogConfig.data = {};
-  //   this.dialog.open(AddCookingTermComponent, dialogConfig);
-  // }
+  handleRefresh(action:string){
+    this.createTable();
+  }
 
+  scrape(){
+    this.service.scrape().subscribe(
+      (data:any)=>{
+        this.createTable();
+      }
+    );
+  }
 }

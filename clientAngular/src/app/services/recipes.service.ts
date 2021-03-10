@@ -17,8 +17,8 @@ export class RecipesService {
   }
 
 
-  addRecipe(recipename: string): Observable<any>{
-    return this.http.post(this.recipeUrl, {recipename:recipename});
+  addRecipe(recipename: string,description: string,category:string,recipePic:string): Observable<any>{
+    return this.http.post(this.recipeUrl, {recipename:recipename,description:description,category:category,recipePic:recipePic});
   }
 
   getRecipe(id:string):Observable<any>{
@@ -26,9 +26,9 @@ export class RecipesService {
     return this.http.get(url);
   }
 
-  updateRecipe(recipe:Recipe):Observable<any>{
-    const url=`${this.recipeUrl}/${recipe.id}`;
-    return this.http.patch(url,{recipeName:recipe.recipename});
+  updateRecipe(recipe:Recipe,recipename: string,description: string,category:string,recipePic:string):Observable<any>{
+    const url=`${this.recipeUrl}/${recipe._id}`;
+    return this.http.patch(url,{recipename:recipename,description:description,category:category,recipePic:recipePic});
   }
 
   deleteRecipe(id: string): Observable<any>{
@@ -36,11 +36,4 @@ export class RecipesService {
     return this.http.delete(url);
   }
 
-  // updateStock(stockName: string, stockrank: string, companyrank: string): Observable<any>{
-  //   return this.http.put(`http://localhost:5000/stocks/update`, {
-  //     stockName,
-  //     stockrank,
-  //     companyrank
-  //   });
-  // }
 }

@@ -14,7 +14,7 @@ router.get('/:id', recipeController.getRecipeById);
 
 router.post('/',recipeController.createRecipe);
 
-router.put('/:id', recipeController.updateRecipe);
+router.patch('/:id', recipeController.updateRecipe);
 
 router.delete('/:id', recipeController.deleteRecipe);
 

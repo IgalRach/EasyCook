@@ -29,6 +29,7 @@ export class CookingTermService {
 
   updateCookingTerm(cookingTerm: CookingTerm,title:string,description:string) {
     const url = `${this.cookingTermUrl}/${cookingTerm._id}`;
+    console.log(cookingTerm._id);
     return this.http.patch(url, { title: title,description:description });
   }
 

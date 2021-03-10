@@ -1,1 +1,39 @@
-<p>category works!</p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<button (click)="startAdd()">
+    Add Category
+</button>
+
+
+<div *ngIf="showAdd()" id="simpleModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add Cooking Term</h2>
+        </div>
+        <input *ngIf="showAdd()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
+        <button *ngIf="showAdd()" (click)="addCcategory()">Submit</button>
+        <button *ngIf="showAdd()" (click)="stopAdd()">close</button>
+    </div>
+</div>
+
+<br>
+<br>
+
+<table id="customers">
+    <tr>
+        <th>Id</th>
+        <th>Category Name</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let item of categotyArr">
+        <td>{{item._id}}</td>
+        <td>{{item.categoryname}}</td>
+
+        <td>
+            <button (click)="deleteTerm(item.categoryname)">Delete</button>
+            <br>
+        </td>
+    </tr>
+
+
+
+</table>

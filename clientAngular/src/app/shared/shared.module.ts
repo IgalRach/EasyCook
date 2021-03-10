@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableModule } from '@angular/material/table';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -41,7 +42,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
    // NgbModule,
     MatDialogModule,
     MatTableModule,
-    MatSidenavModule
+    MatSidenavModule,
+    BrowserModule,
+
+
   ],
   exports:[    
     HeaderComponent,
