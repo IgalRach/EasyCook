@@ -19,7 +19,7 @@ export default function CommentList() {
     return (
         <>
             {comments.map((data, key) => {
-                return <Comment key={key} description={data.description} date= {data.created}  userEmail={data.userEmail} />
+                return <Comment key={key} description={data.description} date= {data.created}  username={data.username} />
             })}
         </>
     );

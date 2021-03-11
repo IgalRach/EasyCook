@@ -32,10 +32,6 @@ export default function Header() {
                         <nav className="classy-navbar justify-content-between" id="deliciousNav">
                             {/* Logo */}
                             <Link className="nav-brand" to="/"><img src="img/core-img/easyCookLogo.png" alt="" /></Link>
-                            {/* Navbar Toggler */}
-                            <div className="classy-navbar-toggler">
-                                <span className="navbarToggler"><span /><span /><span /></span>
-                            </div>
                             {/* Menu */}
                             <div className="classy-menu">
                                 {/* close btn */}
@@ -49,10 +45,10 @@ export default function Header() {
                                         <li><Link to="/about">About Us</Link></li>
                                         <li><Link to="/recipes">Recipes</Link></li>
                                         <li><Link to="/cookingTerms">Cooking Terms</Link></li>
-                                        <li><Link to="/contact">Contact</Link></li>
+                                        <li><Link to="/categories">Categories</Link></li>
                                     </ul>
                                     {/* Newsletter Form */}
-                                    <div className="search-btn">
+                                    <div className="search-btn" style={{marginLeft: "70px", marginTop: "-20px"}} >
                                     <input style={{ border:"none" }} className="navBtn" type="search" name="search" placeholder="Type any keywords..." onChange={doSearch} />
                                         <i className="fa fa-search" type="submit" aria-hidden="true" />
                                     </div>

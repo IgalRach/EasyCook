@@ -10,6 +10,7 @@ import DetailsPage from './Components/Pages/DetailsPage';
 import CookingPage from './Components/Pages/CookingPage';
 import Search from './Components/search';
 import io from "socket.io-client";
+import CategoriesPage from './Components/Pages/CategoriesPage';
 
 
 const socket= io.connect("http://localhost:8082");
@@ -32,7 +33,7 @@ export default function App() {
           <Route path="/recipes" exact component={RecipesPage} />
           <Route path="/recipes/:id" exact component={DetailsPage} />
           <Route path="/cookingTerms" exact component={CookingPage} />
-          <Route path="/contact" exact component={ContactPage} />
+          <Route path="/categories" exact component={CategoriesPage} />
           <Route path="/search" exact component={() => <Search />} />
         </Switch>
 

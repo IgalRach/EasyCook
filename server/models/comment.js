@@ -13,11 +13,11 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 const Comment = new mongoose.Schema({
-  userEmail: {//need to change to username
+  username: {//need to change to username
     type: String,
     required: true,
   },
-  comment: {
+  description: {
     type: String,
     default: "",
   },

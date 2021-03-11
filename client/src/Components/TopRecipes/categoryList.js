@@ -21,7 +21,7 @@ export default function CategoryList({q=''}) {
         <div className="row">
             {
                 items.map((data, key) => {
-                    return <TopCategoryItem name={data.recipename} img={data.recipePic} category={data.category} key={key} />
+                    return <TopCategoryItem name={data.recipename} img={data.recipePic} category={data.category} spec={data._id} key={key} />
                 })
             }
         </div>

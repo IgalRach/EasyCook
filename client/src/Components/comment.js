@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-export default function Comment({description, date, userEmail}) {
+export default function Comment({description, date, username}) {
 
     const published = date;
     const d = new Date(published);
@@ -22,10 +22,10 @@ export default function Comment({description, date, userEmail}) {
     }
 
     return (
-        <div className="w3-container w3-card w3-white w3-round w3-margin"><br />
+        <div className="w3-container w3-card w3-white w3-round w3-margin" style={{maxWidth: "1125px", margin: "auto", paddingBottom: "1%"}} ><br />
             <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" className="w3-left w3-circle w3-margin-right" style={{ width: '40px' }} />
-            <span className="w3-right w3-opacity">{timestamp} min</span>
-            <h4>{userEmail}</h4><br />
+            <span style={{fontWeight: "700",fontSize: "1.4rem", paddingRight: "1%", paddingLeft: "1%"}}>{username}</span>
+            |<span className="w3-right w3-opacity" style={{paddingLeft: "3px"}}>{timestamp} min</span>
             <hr className="w3-clear" />
             <p>{description}</p>           
         </div>   
