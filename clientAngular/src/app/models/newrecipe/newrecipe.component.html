@@ -3,6 +3,12 @@
     Add recipe
 </button>
 
+<input type="text" placeholder="Title" [(ngModel)]="TitleSearch" />
+<button (click)="search()">
+  Search
+</button>
+
+
 <div *ngIf="showAdd()" id="simpleModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -23,7 +29,8 @@
                 [(ngModel)]="ingredients"></textarea>
         </div>
         <div>
-            <textarea class="description" *ngIf="showAdd()" type="text" placeholder="Enter Description" [(ngModel)]="Des"></textarea>
+            <textarea class="description" *ngIf="showAdd()" type="text" placeholder="Enter Description"
+                [(ngModel)]="Des"></textarea>
         </div>
         <button *ngIf="showAdd()" (click)="addRecipe()">Submit</button>
         <button *ngIf="showAdd()" (click)="stopAdd()">close</button>
@@ -33,20 +40,28 @@
 
 <br>
 <br>
+<div *ngIf="filterData.length!=0">
+    <h3>Your search resulsts:</h3>
+<table #dt id="customers">
 
-<table id="customers">
     <tr>
         <th>Id</th>
         <th>Name</th>
+        <th>Ingredients</th>
         <th>Description</th>
         <th>Category</th>
         <th>Picture</th>
         <th>Prop Time</th>
         <th>Action</th>
     </tr>
-    <tr *ngFor="let item of recipesArr">
+
+
+
+
+    <tr *ngFor="let item of filterData">
         <td>{{item._id}}</td>
         <td>{{item.recipename}}</td>
+        <td>{{item.ingredients}}</td>
         <td>{{item.description}}</td>
         <td>{{item.category}}</td>
         <td>{{item.recipePic}}</td>
@@ -80,7 +95,8 @@
                             [(ngModel)]="ingredients"></textarea>
                     </div>
                     <div>
-                        <textarea class="description" *ngIf="showEdit()" type="text" placeholder="Enter Description" [(ngModel)]="Des"></textarea>
+                        <textarea class="description" *ngIf="showEdit()" type="text" placeholder="Enter Description"
+                            [(ngModel)]="Des"></textarea>
                     </div>
                     <button *ngIf="showEdit()" (click)="editRecipe()">Submit</button>
                     <button *ngIf="showEdit()" (click)="stopEdit()">close</button>
@@ -88,7 +104,72 @@
             </div>
         </td>
     </tr>
-
-
-
 </table>
+</div>
+
+<br>
+<br>
+
+<div *ngIf="filterData.length==0">
+<table #dt id="customers">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Picture</th>
+        <th>Prop Time</th>
+        <th>Action</th>
+    </tr>
+
+
+    <tr *ngFor="let item of recipesArr">
+        <td>{{item._id}}</td>
+        <td>{{item.recipename}}</td>
+        <td>{{item.ingredients}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.recipePic}}</td>
+        <td>{{item.propTime}}</td>
+
+        <td>
+
+            <button (click)="startEditing(item._id)">Edit</button>
+
+            <button (click)="deleteRecipe(item._id)">Delete</button>
+            <br>
+
+
+            <div *ngIf="showEdit()" id="simpleModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Recipe</h2>
+                    </div>
+                    <div>
+                        <input *ngIf="showEdit()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
+                    </div>
+                    <form>
+                        <select [(ngModel)]="Category" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let cat of categoryArr">{{cat.categoryname}}</option>
+                        </select>
+                    </form>
+                    <input *ngIf="showEdit()" type="text" placeholder="Enter Picture Url" [(ngModel)]="recipePic">
+                    <input *ngIf="showEdit()" type="text" placeholder="Enter Proporation Time" [(ngModel)]="propTime">
+                    <div>
+                        <textarea class="ingredients" *ngIf="showEdit()" type="text" placeholder="Enter Ingredients"
+                            [(ngModel)]="ingredients"></textarea>
+                    </div>
+                    <div>
+                        <textarea class="description" *ngIf="showEdit()" type="text" placeholder="Enter Description"
+                            [(ngModel)]="Des"></textarea>
+                    </div>
+                    <button *ngIf="showEdit()" (click)="editRecipe()">Submit</button>
+                    <button *ngIf="showEdit()" (click)="stopEdit()">close</button>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+</div>

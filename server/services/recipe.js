@@ -22,6 +22,7 @@ const createRecipe = async (req) => {
                     if (err) console.log(err);
                     console.log("Created new recipe");
                 });
+            
             }));
         }
     });

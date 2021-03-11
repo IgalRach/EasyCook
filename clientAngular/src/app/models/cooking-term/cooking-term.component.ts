@@ -13,9 +13,11 @@ export class CookingTermComponent implements OnInit {
   @Output() refresh = new EventEmitter<string>();
 
   cookingTermArr: Array<CookingTerm>;
+  filterData: Array<CookingTerm>;
   @Input() Title=""; 
   @Input() Des=""; 
   @Input() cuttentItemId:string=""; 
+  @Input() TitleSearch=""; 
 
   show=false;
   showAd=false;
@@ -23,6 +25,7 @@ export class CookingTermComponent implements OnInit {
 
   constructor(private service: CookingTermService) {
      this.cookingTermArr = new Array<CookingTerm>();
+     this.filterData = new Array<CookingTerm>();
     }
 
   ngOnInit() {
@@ -40,13 +43,26 @@ export class CookingTermComponent implements OnInit {
     );
   }
 
+  search(){
+    this.filterData=[];
+    this.service.getCookingTerms().subscribe(
+      (data: any) => {
+        data.forEach((element: any) => {
+          if(element.title.includes(this.TitleSearch))
+          this.filterData.push(element)
+        });
+      }
+    );  
+  }
 
+  
   addCookingterm(){
     this.service.createCookingTerm(this.Title,this.Des).subscribe(
       (data: any) => {
+        this.cookingTermArr=[];
+        this.createTable();
         console.log("succsess");
         this.showAd=false;
-        this.createTable();
       }
     );
   }

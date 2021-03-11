@@ -1,9 +1,9 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit,Input,EventEmitter } from '@angular/core';
-import {RecipesService} from '../../services/recipes.service';
-import {CategoryService} from '../../services/category.service';
-import{Recipe} from '../recipe';
-import{Category} from '../category';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { RecipesService } from '../../services/recipes.service';
+import { CategoryService } from '../../services/category.service';
+import { Recipe } from '../recipe';
+import { Category } from '../category';
 
 
 
@@ -15,22 +15,25 @@ import{Category} from '../category';
 })
 export class NewrecipeComponent implements OnInit {
   recipesArr: Array<Recipe>
-  categoryArr:Array<Category>;
-  @Input() Title:string=""; 
-  @Input() Des:string=""; 
-  @Input() recipePic:string=""; 
-  @Input() Category:string=""; 
-  @Input() propTime:string=""; 
-  @Input() ingredients:string=""; 
-  @Input() cuttentItemId:string=""; 
-  show=false;
-  showAd=false;
+  categoryArr: Array<Category>;
+  filterData: Array<Recipe>;
+  @Input() Title: string = "";
+  @Input() Des: string = "";
+  @Input() recipePic: string = "";
+  @Input() Category: string = "";
+  @Input() propTime: string = "";
+  @Input() ingredients: string = "";
+  @Input() cuttentItemId: string = "";
 
-  constructor(private service: RecipesService, private categoryService:CategoryService) {
+  @Input() TitleSearch = "";
+  show = false;
+  showAd = false;
+
+  constructor(private service: RecipesService, private categoryService: CategoryService) {
     this.recipesArr = new Array<Recipe>();
     this.categoryArr = new Array<Category>();
-
-   }
+    this.filterData = new Array<Recipe>();
+  }
 
   ngOnInit(): void {
     this.createTable();
@@ -38,8 +41,8 @@ export class NewrecipeComponent implements OnInit {
   }
 
 
-  createTable(){
-    this.recipesArr=[];
+  createTable() {
+    this.recipesArr = [];
     this.service.getrecipes().subscribe(
       (data: any) => {
         data.forEach((element: any) => {
@@ -49,8 +52,8 @@ export class NewrecipeComponent implements OnInit {
     );
   }
 
-  createCategoryList(){
-    this.categoryArr=[];
+  createCategoryList() {
+    this.categoryArr = [];
     this.categoryService.getCategoeies().subscribe(
       (data: any) => {
         data.forEach((element: any) => {
@@ -60,22 +63,36 @@ export class NewrecipeComponent implements OnInit {
     );
   }
 
-  addRecipe(){
-    this.service.addRecipe(this.Title,this.Des,this.Category,this.recipePic,this.propTime,this.ingredients).subscribe(
+  search() {
+    this.filterData = [];
+    this.service.getrecipes().subscribe(
+      (data: any) => {
+
+        data.forEach((element: any) => {
+          if (element.recipename.includes(this.TitleSearch))
+            this.filterData.push(element)
+        });
+      }
+    );
+  }
+
+
+  addRecipe() {
+    this.service.addRecipe(this.Title, this.Des, this.Category, this.recipePic, this.propTime, this.ingredients).subscribe(
       (data: any) => {
         console.log("succsess");
         this.createTable();
-        this.showAd=false;
+        this.showAd = false;
 
       }
     );
   }
   editRecipe() {
     console.log("succsess");
-    this.service.updateRecipe(this.cuttentItemId,this.Title,this.Des,this.Category,this.recipePic,this.propTime,this.ingredients).subscribe(
+    this.service.updateRecipe(this.cuttentItemId, this.Title, this.Des, this.Category, this.recipePic, this.propTime, this.ingredients).subscribe(
       (data: any) => {
         console.log("succsess");
-        this.show=false;
+        this.show = false;
         this.createTable();
       }
     );
@@ -92,27 +109,27 @@ export class NewrecipeComponent implements OnInit {
   }
 
 
-  showAdd(){
+  showAdd() {
     return this.showAd;
   }
-  showEdit(){
+  showEdit() {
     return this.show;
   }
 
-  startEditing(id:string){
-    this.cuttentItemId=id;
+  startEditing(id: string) {
+    this.cuttentItemId = id;
     console.log(this.cuttentItemId);
-    this.show=true;
+    this.show = true;
   }
-  stopEdit(){
-    this.show=false;
+  stopEdit() {
+    this.show = false;
   }
 
-  startAdd(){
-    this.showAd=true;
+  startAdd() {
+    this.showAd = true;
   }
-  stopAdd(){
-    this.showAd=false;
+  stopAdd() {
+    this.showAd = false;
   }
 
 }
