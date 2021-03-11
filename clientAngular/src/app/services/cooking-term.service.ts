@@ -27,9 +27,8 @@ export class CookingTermService {
     return this.http.get<any>(url);
   }
 
-  updateCookingTerm(cookingTerm: CookingTerm,title:string,description:string) {
-    const url = `${this.cookingTermUrl}/${cookingTerm._id}`;
-    console.log(cookingTerm._id);
+  updateCookingTerm(cookingTermId:string,title:string,description:string) {
+    const url = `${this.cookingTermUrl}/${cookingTermId}`;
     return this.http.patch(url, { title: title,description:description });
   }
 

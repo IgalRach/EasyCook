@@ -5,4 +5,5 @@ export interface Recipe{
     category:string,
     recipePic:string,
     propTime:string,
+    ingredients:string,
 }

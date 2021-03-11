@@ -15,6 +15,8 @@ export class CookingTermComponent implements OnInit {
   cookingTermArr: Array<CookingTerm>;
   @Input() Title=""; 
   @Input() Des=""; 
+  @Input() cuttentItemId:string=""; 
+
   show=false;
   showAd=false;
   term:string="";
@@ -49,9 +51,9 @@ export class CookingTermComponent implements OnInit {
     );
   }
 
-  editTerm(cookingTerm:CookingTerm) {
+  editTerm() {
     console.log("succsess");
-    this.service.updateCookingTerm(cookingTerm,this.Title,this.Des).subscribe(
+    this.service.updateCookingTerm(this.cuttentItemId,this.Title,this.Des).subscribe(
       (data: any) => {
         console.log("succsess");
         this.refresh.emit("Refresh");
@@ -68,7 +70,9 @@ export class CookingTermComponent implements OnInit {
     return this.show;
   }
 
-  startEditing(){
+  startEditing(id:string){
+    this.cuttentItemId=id;
+    console.log(this.cuttentItemId);
     this.show=true;
   }
   stopEdit(){

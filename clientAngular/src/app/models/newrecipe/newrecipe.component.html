@@ -19,6 +19,10 @@
         <input *ngIf="showAdd()" type="text" placeholder="Enter Picture Url" [(ngModel)]="recipePic">
         <input *ngIf="showAdd()" type="text" placeholder="Enter Proporation Time" [(ngModel)]="propTime">
         <div>
+            <textarea *ngIf="showAdd()" type="text" placeholder="Enter Ingredients"
+                [(ngModel)]="ingredients"></textarea>
+        </div>
+        <div>
             <textarea *ngIf="showAdd()" type="text" placeholder="Enter Description" [(ngModel)]="Des"></textarea>
         </div>
         <button *ngIf="showAdd()" (click)="addRecipe()">Submit</button>
@@ -50,7 +54,7 @@
 
         <td>
 
-            <button (click)="startEditing()">Edit</button>
+            <button (click)="startEditing(item._id)">Edit</button>
 
             <button (click)="deleteRecipe(item._id)">Delete</button>
             <br>
@@ -61,15 +65,25 @@
                     <div class="modal-header">
                         <h2>Edit Recipe</h2>
                     </div>
-                    <input *ngIf="showEdit()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
-                    <input *ngIf="showEdit()" type="text" placeholder="Enter Description" [(ngModel)]="Des">
+                    <div>
+                        <input *ngIf="showEdit()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
+                    </div>
                     <form>
                         <select [(ngModel)]="Category" [ngModelOptions]="{standalone: true}">
                             <option *ngFor="let cat of categoryArr">{{cat.categoryname}}</option>
                         </select>
                     </form>
+                    <div>
+                        <textarea *ngIf="showEdit()" type="text" placeholder="Enter Ingredients"
+                            [(ngModel)]="ingredients"></textarea>
+                    </div>
+                    <div>
+                        <textarea *ngIf="showEdit()" type="text" placeholder="Enter Description"
+                            [(ngModel)]="Des"></textarea>
+                    </div>
+
                     <input *ngIf="showEdit()" type="text" placeholder="Enter Picture Url" [(ngModel)]="recipePic">
-                    <button *ngIf="showEdit()" (click)="editRecipe(item)">Submit</button>
+                    <button *ngIf="showEdit()" (click)="editRecipe()">Submit</button>
                     <button *ngIf="showEdit()" (click)="stopEdit()">close</button>
                 </div>
             </div>

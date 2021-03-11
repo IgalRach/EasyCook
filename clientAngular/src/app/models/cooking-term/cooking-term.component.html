@@ -37,7 +37,7 @@
 
     <td>
 
-      <button (click)="startEditing()">Edit</button>
+      <button (click)="startEditing(item._id)">Edit</button>
 
       <button (click)="deleteTerm(item._id)">Delete</button>
       <br>
@@ -50,7 +50,7 @@
           </div>
           <input *ngIf="showEdit()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
           <input *ngIf="showEdit()" type="text" placeholder="Enter Description" [(ngModel)]="Des">
-          <button *ngIf="showEdit()" (click)="editTerm(item)">Submit</button>
+          <button *ngIf="showEdit()" (click)="editTerm()">Submit</button>
           <button *ngIf="showEdit()" (click)="stopEdit()">close</button>
         </div>
       </div>

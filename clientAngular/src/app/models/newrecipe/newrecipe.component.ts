@@ -21,6 +21,8 @@ export class NewrecipeComponent implements OnInit {
   @Input() recipePic:string=""; 
   @Input() Category:string=""; 
   @Input() propTime:string=""; 
+  @Input() ingredients:string=""; 
+  @Input() cuttentItemId:string=""; 
   show=false;
   showAd=false;
 
@@ -59,7 +61,7 @@ export class NewrecipeComponent implements OnInit {
   }
 
   addRecipe(){
-    this.service.addRecipe(this.Title,this.Des,this.Category,this.recipePic,this.propTime).subscribe(
+    this.service.addRecipe(this.Title,this.Des,this.Category,this.recipePic,this.propTime,this.ingredients).subscribe(
       (data: any) => {
         console.log("succsess");
         this.createTable();
@@ -68,9 +70,9 @@ export class NewrecipeComponent implements OnInit {
       }
     );
   }
-  editRecipe(recipe:Recipe) {
+  editRecipe() {
     console.log("succsess");
-    this.service.updateRecipe(recipe,this.Title,this.Des,this.Category,this.recipePic,this.propTime).subscribe(
+    this.service.updateRecipe(this.cuttentItemId,this.Title,this.Des,this.Category,this.recipePic,this.propTime,this.ingredients).subscribe(
       (data: any) => {
         console.log("succsess");
         this.show=false;
@@ -97,7 +99,9 @@ export class NewrecipeComponent implements OnInit {
     return this.show;
   }
 
-  startEditing(){
+  startEditing(id:string){
+    this.cuttentItemId=id;
+    console.log(this.cuttentItemId);
     this.show=true;
   }
   stopEdit(){

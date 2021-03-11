@@ -17,8 +17,8 @@ export class RecipesService {
   }
 
 
-  addRecipe(recipename: string,description: string,category:string,recipePic:string,propTime:string): Observable<any>{
-    return this.http.post(this.recipeUrl, {recipename:recipename,description:description,category:category,recipePic:recipePic,propTime:propTime});
+  addRecipe(recipename: string,description: string,category:string,recipePic:string,propTime:string,ingredients:string): Observable<any>{
+    return this.http.post(this.recipeUrl, {recipename:recipename,description:description,category:category,recipePic:recipePic,propTime:propTime,ingredients:ingredients});
   }
 
   getRecipe(id:string):Observable<any>{
@@ -26,9 +26,9 @@ export class RecipesService {
     return this.http.get(url);
   }
 
-  updateRecipe(recipe:Recipe,recipename: string,description: string,category:string,recipePic:string,propTime:string):Observable<any>{
-    const url=`${this.recipeUrl}/${recipe._id}`;
-    return this.http.patch(url,{recipename:recipename,description:description,category:category,recipePic:recipePic,propTime:propTime});
+  updateRecipe(recipeId:string,recipename: string,description: string,category:string,recipePic:string,propTime:string,ingredients:string):Observable<any>{
+    const url=`${this.recipeUrl}/${recipeId}`;
+    return this.http.patch(url,{recipename:recipename,description:description,category:category,recipePic:recipePic,propTime:propTime,ingredients:ingredients});
   }
 
   deleteRecipe(id: string): Observable<any>{

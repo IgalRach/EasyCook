@@ -16,7 +16,7 @@ router.get('/cookingTerms/:id', cookingTermsController.getCookingTermById);
 
 router.post('/cookingTerms', cookingTermsController.createCookingTerm);
 
-router.put('/cookingTerms', cookingTermsController.updateCookingTerm);
+router.patch('/cookingTerms/:id', cookingTermsController.updateCookingTerm);
 
 router.delete('/cookingTerms/:id', cookingTermsController.deleteCookingTerm);
 
