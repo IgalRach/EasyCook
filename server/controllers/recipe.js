@@ -35,11 +35,11 @@ const getRecipeByTitle = async (req,res)=>{
         
     }
 }
-const getCategoryRecipes = async (req,res)=>{
+const getRecipesByCategory = async (req,res)=>{
 
-    const recipes= await RecipeService.getCategoryRecipes(req);
+    const recipes= await RecipeService.getRecipesByCategory(req);
     try {
-        //res.json(recipes);
+        res.json(recipes);
     } catch (error) {
         
    }
@@ -76,7 +76,7 @@ module.exports ={createRecipe,
     getRecipes,
     getRecipeById,
     getRecipeByTitle,
-    getCategoryRecipes,
+    getRecipesByCategory,
     getComments,
     updateRecipe,
     deleteRecipe

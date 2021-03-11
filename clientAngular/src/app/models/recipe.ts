@@ -4,4 +4,5 @@ export interface Recipe{
     description:String,//body 
     category:string,
     recipePic:string,
+    propTime:string,
 }

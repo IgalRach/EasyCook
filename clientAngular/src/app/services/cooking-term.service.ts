@@ -39,7 +39,7 @@ export class CookingTermService {
   }
 
   scrape(): Observable<any> {
-    const url = `${this.cookingTermUrl}/scrape`;
+    const url = 'http://localhost:8082/scrape';
     return this.http.get(url);
   }
 }

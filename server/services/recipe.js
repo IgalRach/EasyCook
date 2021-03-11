@@ -13,7 +13,8 @@ const createRecipe = async (req) => {
                 recipename: req.body.recipename,
                 description: req.body.description,
                 recipePic: req.body.recipePic,
-                category: category.categoryname
+                category: category.categoryname,
+                propTime:req.body.propTime,
             });
             recipe.save().then((newrecipe => {
                 category.recipes.push(newrecipe);
@@ -46,14 +47,9 @@ const getRecipeByTitle = async (req) => {
     return recipe;
 }
 
-const getCategoryRecipes = async (req) => {
-    const category = await Category.findOne({ categoryname: req.body.category });
-    for(var i in category.recipes){
-        const recipe= Recipe.findById(category.recipes[i]);
-        json(recipe);
-    }
-
-    return category.recipes;
+const getRecipesByCategory = async (req) => {
+    const category = await Category.findOne({ categoryname: req.body.category }).populate('recipes');
+    return category;
 }
 
 
@@ -78,10 +74,6 @@ const updateRecipe = async (req) => {
 const deleteRecipe = async (id) => {
     const recipe = await getRecipeById(id);
     const category = await Category.findOne({ categoryname:recipe.category});
-    //for(var com in category.recipes)
-    //      Category.deleteOne({recipes:})
-        
-
     if (!recipe)
         return null;
     await recipe.remove();
@@ -92,7 +84,7 @@ module.exports = {
     getRecipeById,
     getRecipes,
     getRecipeByTitle,
-    getCategoryRecipes,
+    getRecipesByCategory,
     updateRecipe,
     deleteRecipe
 }

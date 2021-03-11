@@ -3,31 +3,10 @@ const Recipe = require('../models/recipe');
 
 const CommentService = require('../services/comment');
 
-//create
-const create = (req,res)=>{
-    const comment = new Comment({   
-        recipe: req.body.recipeid,     
-        recipename: req.body.recipename,
-        userEmail: req.body.userEmail,
-        description: req.body.description
-    });
-
-    comment.save().then(newComment => {
-        Recipe.findOneAndUpdate({ recipe: req.body.recipeid }, {
-            $push: {
-                comments: {
-                    $each: [newComment],
-                    $position: 0
-                }
-            }
-        }).then(() => res.json({ status: 'success', value: newComment, value: newComment.recipe})).catch(() => {
-            res.json({status: 'failed'});
-        });
-    }).catch(() => {
-        res.json({ status: 'failed' });
-    });
+const create = async (req,res)=>{
+    const comment = await CommentService.create(req);
+    res.json(comment);
 }
-
 //get
 const get = async (req,res)=>{
     await Recipe.findById(req.params.recipeId).populate('comments').exec(function(err, docs) {

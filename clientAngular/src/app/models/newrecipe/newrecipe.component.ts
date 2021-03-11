@@ -20,6 +20,7 @@ export class NewrecipeComponent implements OnInit {
   @Input() Des:string=""; 
   @Input() recipePic:string=""; 
   @Input() Category:string=""; 
+  @Input() propTime:string=""; 
   show=false;
   showAd=false;
 
@@ -58,7 +59,7 @@ export class NewrecipeComponent implements OnInit {
   }
 
   addRecipe(){
-    this.service.addRecipe(this.Title,this.Des,this.Category,this.recipePic).subscribe(
+    this.service.addRecipe(this.Title,this.Des,this.Category,this.recipePic,this.propTime).subscribe(
       (data: any) => {
         console.log("succsess");
         this.createTable();
@@ -69,7 +70,7 @@ export class NewrecipeComponent implements OnInit {
   }
   editRecipe(recipe:Recipe) {
     console.log("succsess");
-    this.service.updateRecipe(recipe,this.Title,this.Des,this.Category,this.recipePic).subscribe(
+    this.service.updateRecipe(recipe,this.Title,this.Des,this.Category,this.recipePic,this.propTime).subscribe(
       (data: any) => {
         console.log("succsess");
         this.show=false;

@@ -12,14 +12,13 @@ const Recipe = new mongoose.Schema({
     type: String,
   },
   category: {
-  // type: mongoose.Schema.Types.ObjectId,
-   //requred: true,
-//    ref:"Category"
     type:String,
   },
-  recipePic:{type: String},//changed from
+  propTime:{
+    type:String,
+  },
+  recipePic:{type: String},
   comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
-  //rating: [{ type: Schema.Types.ObjectId, ref: "Rating" }],
 });
 
 module.exports = mongoose.model('Recipe', Recipe);

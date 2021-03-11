@@ -8,14 +8,19 @@
         <div class="modal-header">
             <h2>Add Recipe</h2>
         </div>
-        <input *ngIf="showAdd()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
-        <input *ngIf="showAdd()" type="text" placeholder="Enter Description" [(ngModel)]="Des">
+        <div>
+            <input *ngIf="showAdd()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
+        </div>
         <form>
             <select [(ngModel)]="Category" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let cat of categoryArr">{{cat.categoryname}}</option>
             </select>
         </form>
         <input *ngIf="showAdd()" type="text" placeholder="Enter Picture Url" [(ngModel)]="recipePic">
+        <input *ngIf="showAdd()" type="text" placeholder="Enter Proporation Time" [(ngModel)]="propTime">
+        <div>
+            <textarea *ngIf="showAdd()" type="text" placeholder="Enter Description" [(ngModel)]="Des"></textarea>
+        </div>
         <button *ngIf="showAdd()" (click)="addRecipe()">Submit</button>
         <button *ngIf="showAdd()" (click)="stopAdd()">close</button>
     </div>
@@ -32,6 +37,7 @@
         <th>Description</th>
         <th>Category</th>
         <th>Picture</th>
+        <th>Prop Time</th>
         <th>Action</th>
     </tr>
     <tr *ngFor="let item of recipesArr">
@@ -40,6 +46,7 @@
         <td>{{item.description}}</td>
         <td>{{item.category}}</td>
         <td>{{item.recipePic}}</td>
+        <td>{{item.propTime}}</td>
 
         <td>
 

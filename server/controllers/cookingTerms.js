@@ -62,8 +62,8 @@ const deleteCookingTerm = async (req, res) => {
 }
 
 const scrape = async (req, res) => {
-  //Scrape.scrape();
-  //res.send();
+  await Scrape.scrape();
+  res.send();
 
   console.log("controller")
 
