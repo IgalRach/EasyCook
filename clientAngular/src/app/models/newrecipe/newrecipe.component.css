@@ -77,3 +77,12 @@ input{
     margin: 0;
     font-weight:bold;
   }
+
+  .ingredients{
+    width: 300px;
+    height: 100px;
+  }
+  .description{
+    width: 350px;
+    height: 150px;
+  }
