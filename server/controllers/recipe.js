@@ -70,6 +70,10 @@ const deleteRecipe = async (req,res)=>{
     res.send();
 }
 
+const groupBy = async (req, res) => { 
+    const data = await RecipeService.groupBy();
+    res.send(data);
+   };
 
 
 module.exports ={createRecipe,
@@ -79,5 +83,6 @@ module.exports ={createRecipe,
     getRecipesByCategory,
     getComments,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe,
+    groupBy
 };

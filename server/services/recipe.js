@@ -1,6 +1,5 @@
 const Recipe = require('../models/recipe');
 const Category = require('../models/category');
-const Comment = require('../models/comment');
 
 
 const createRecipe = async (req) => {
@@ -15,6 +14,7 @@ const createRecipe = async (req) => {
                 recipePic: req.body.recipePic,
                 category: category.categoryname,
                 propTime:req.body.propTime,
+                ingredients:req.body.ingredients,
             });
             recipe.save().then((newrecipe => {
                 category.recipes.push(newrecipe);
@@ -64,6 +64,7 @@ const updateRecipe = async (req) => {
     recipe.description=req.body.description;
     recipe.category=req.body.category;
     recipe.recipePic=req.body.recipePic;
+    recipe.ingredients=req.body.ingredients,
     await recipe.save();
     return recipe;
 
@@ -79,6 +80,17 @@ const deleteRecipe = async (id) => {
     await recipe.remove();
 }
 
+const groupBy= async()=>{
+    const data = await Recipe.aggregate([{
+        $group : {
+            _id : "$category",
+            total: {$sum : 1}
+          }  
+    }]);
+    return data;
+}
+
+
 module.exports = {
     createRecipe,
     getRecipeById,
@@ -86,5 +98,6 @@ module.exports = {
     getRecipeByTitle,
     getRecipesByCategory,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe,
+    groupBy
 }

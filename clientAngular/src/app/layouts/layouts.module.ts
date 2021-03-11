@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CookingTermService } from '../services/cooking-term.service';
 import { NewrecipeComponent } from '../models/newrecipe/newrecipe.component';
+import { DashboardComponent } from '../models/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NewrecipeComponent } from '../models/newrecipe/newrecipe.component';
     CookingTermComponent,
     RecipesComponent,
     CategoryComponent,
-    NewrecipeComponent
+    NewrecipeComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

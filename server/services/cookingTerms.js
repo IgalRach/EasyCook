@@ -54,17 +54,6 @@ const deleteCookingTerm = async (id) => {
   await terms.remove();
 }
 
-const groupBy = async () => {
-  const data = await cookingTermModel.aggregate([{
-    $group: {
-      _id: "$firstLetter",
-      total: { $sum: 1 }
-    }
-
-  }]);
-  return data;
-}
-
 const mapReduce = async () => {
 
   console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
@@ -83,7 +72,6 @@ module.exports = {
   getCookingTermsById,
   updateCookingTerm,
   deleteCookingTerm,
-  getCookingTermByName,
-  groupBy,
+  getCookingTermByName,   
   mapReduce
 }

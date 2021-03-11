@@ -20,11 +20,8 @@ const scrape= async()=>{
     const $ = cheerio.load(page.data);
     $('p').each(function(){
         description = $(this).text();
-        console.log(description);
         $('strong',this).each(function(){
             title = $(this).text();
-            console.log(title);
-            console.log(description);
             createCookingTermByScrape(title,description);
         });
     });
