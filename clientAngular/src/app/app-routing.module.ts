@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { LayoutsComponent } from './layouts/layouts.component';
 import { CategoryComponent } from './models/category/category.component';
 import { CookingTermComponent } from './models/cooking-term/cooking-term.component';
+import { DashboardComponent } from './models/dashboard/dashboard.component';
 import { NewrecipeComponent } from './models/newrecipe/newrecipe.component';
 
 const routes: Routes = [{
@@ -11,6 +12,10 @@ const routes: Routes = [{
   component: LayoutsComponent,
 
   children: [
+    {
+      path: '',
+      component: DashboardComponent,
+    },
     {
       path: 'recipes',
       component: NewrecipeComponent,
