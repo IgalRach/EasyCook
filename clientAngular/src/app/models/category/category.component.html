@@ -9,6 +9,9 @@
         <div class="modal-header">
             <h2>Add Cooking Term</h2>
         </div>
+        <div *ngIf="ValidationErrors()" class="modal-header">
+            <h2>You Must Fill All The Inputs</h2>
+        </div>
         <input *ngIf="showAdd()" type="text" placeholder="Enter Title" [(ngModel)]="Title">
         <button *ngIf="showAdd()" (click)="addCcategory()">Submit</button>
         <button *ngIf="showAdd()" (click)="stopAdd()">close</button>

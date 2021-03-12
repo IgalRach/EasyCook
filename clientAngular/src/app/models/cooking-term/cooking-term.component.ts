@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CookingTermService } from '../../services/cooking-term.service';
 import { CookingTerm } from '../cookingTerm'
 
@@ -14,26 +14,28 @@ export class CookingTermComponent implements OnInit {
 
   cookingTermArr: Array<CookingTerm>;
   filterData: Array<CookingTerm>;
-  @Input() Title=""; 
-  @Input() Des=""; 
-  @Input() cuttentItemId:string=""; 
-  @Input() TitleSearch=""; 
+  @Input() Title = "";
+  @Input() Des = "";
+  @Input() cuttentItemId: string = "";
+  @Input() TitleSearch = "";
 
-  show=false;
-  showAd=false;
-  term:string="";
+  show = false;
+  showAd = false;
+  term: string = "";
+
+  validation = false;
 
   constructor(private service: CookingTermService) {
-     this.cookingTermArr = new Array<CookingTerm>();
-     this.filterData = new Array<CookingTerm>();
-    }
+    this.cookingTermArr = new Array<CookingTerm>();
+    this.filterData = new Array<CookingTerm>();
+  }
 
   ngOnInit() {
     this.createTable();
   }
 
-  createTable(){
-    this.cookingTermArr=[];
+  createTable() {
+    this.cookingTermArr = [];
     this.service.getCookingTerms().subscribe(
       (data: any) => {
         data.forEach((element: any) => {
@@ -43,63 +45,75 @@ export class CookingTermComponent implements OnInit {
     );
   }
 
-  search(){
-    this.filterData=[];
+  search() {
+    this.filterData = [];
     this.service.getCookingTerms().subscribe(
       (data: any) => {
         data.forEach((element: any) => {
-          if(element.title.includes(this.TitleSearch))
-          this.filterData.push(element)
+          if (element.title.includes(this.TitleSearch))
+            this.filterData.push(element)
         });
       }
-    );  
+    );
   }
 
-  
-  addCookingterm(){
-    this.service.createCookingTerm(this.Title,this.Des).subscribe(
-      (data: any) => {
-        this.cookingTermArr=[];
-        this.createTable();
-        console.log("succsess");
-        this.showAd=false;
-      }
-    );
+
+  addCookingterm() {
+    if ((!this.Title)||(!this.Des)) {
+      this.validation=true;
+      this.ValidationErrors();
+    } 
+    else {
+      this.service.createCookingTerm(this.Title, this.Des).subscribe(
+        (data: any) => {
+          this.cookingTermArr = [];
+          this.createTable();
+          console.log("succsess");
+          this.showAd = false;
+        }
+      );
+    }
+  }
+
+  ValidationErrors() {
+    return this.validation;
   }
 
   editTerm() {
     console.log("succsess");
-    this.service.updateCookingTerm(this.cuttentItemId,this.Title,this.Des).subscribe(
+    this.service.updateCookingTerm(this.cuttentItemId, this.Title, this.Des).subscribe(
       (data: any) => {
         console.log("succsess");
         this.refresh.emit("Refresh");
-        this.show=false;
+        this.show = false;
         this.createTable();
       }
     );
   }
 
-  showAdd(){
+  showAdd() {
     return this.showAd;
   }
-  showEdit(){
+  showEdit() {
     return this.show;
   }
 
-  startEditing(id:string){
-    this.cuttentItemId=id;
+  startEditing(id: string) {
+    this.cuttentItemId = id;
     console.log(this.cuttentItemId);
-    this.show=true;
+    this.show = true;
   }
-  stopEdit(){
-    this.show=false;
+  stopEdit() {
+    this.show = false;
   }
 
-  startAdd(){
-    this.showAd=true;
+  startAdd() {
+    this.showAd = true;
   }
-  stopAdd(){
-    this.showAd=false;
+  stopAdd() {
+    this.showAd = false;
+    this.validation = false;
+    return this.validation=false;
   }
 
 
@@ -114,13 +128,13 @@ export class CookingTermComponent implements OnInit {
   }
 
 
-  handleRefresh(action:string){
+  handleRefresh(action: string) {
     this.createTable();
   }
 
-  scrape(){
+  scrape() {
     this.service.scrape().subscribe(
-      (data:any)=>{
+      (data: any) => {
         this.createTable();
       }
     );

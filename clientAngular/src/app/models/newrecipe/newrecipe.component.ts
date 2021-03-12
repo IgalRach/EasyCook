@@ -26,8 +26,12 @@ export class NewrecipeComponent implements OnInit {
   @Input() cuttentItemId: string = "";
 
   @Input() TitleSearch = "";
+  @Input() ingredientsSearch = "";
+  @Input() DesSearch = "";
+  @Input() CategorySearch = "";
   show = false;
   showAd = false;
+  validation = false;
 
   constructor(private service: RecipesService, private categoryService: CategoryService) {
     this.recipesArr = new Array<Recipe>();
@@ -68,8 +72,11 @@ export class NewrecipeComponent implements OnInit {
     this.service.getrecipes().subscribe(
       (data: any) => {
         data.forEach((element: any) => {
-          if (element.recipename.includes(this.TitleSearch))
+          if (element.recipename.includes(this.TitleSearch) &&
+            element.description.includes(this.DesSearch) &&
+            element.ingredients.includes(this.ingredientsSearch))
             this.filterData.push(element)
+          console.log(element.description);
         });
       }
     );
@@ -77,15 +84,28 @@ export class NewrecipeComponent implements OnInit {
 
 
   addRecipe() {
-    this.service.addRecipe(this.Title, this.Des, this.Category, this.recipePic, this.propTime, this.ingredients).subscribe(
-      (data: any) => {
-        console.log("succsess");
-        this.createTable();
-        this.showAd = false;
+    if ((!this.Title) || (!this.Des) || (!this.Category) || (!this.recipePic) || (!this.propTime) || (!this.ingredients)) {
+      this.validation=true;
+      this.ValidationErrors();
+    }
+    else {
+      this.service.addRecipe(this.Title, this.Des, this.Category, this.recipePic, this.propTime, this.ingredients).subscribe(
+        (data: any) => {
+          this.validation = false;
+          console.log("succsess");
 
-      }
-    );
+          // this.createTable();
+          this.showAd = false;
+        }
+      );
+    }
   }
+
+  ValidationErrors() {
+    return this.validation;
+  }
+
+
   editRecipe() {
     console.log("succsess");
     this.service.updateRecipe(this.cuttentItemId, this.Title, this.Des, this.Category, this.recipePic, this.propTime, this.ingredients).subscribe(
@@ -117,7 +137,6 @@ export class NewrecipeComponent implements OnInit {
 
   startEditing(id: string) {
     this.cuttentItemId = id;
-    console.log(this.cuttentItemId);
     this.show = true;
   }
   stopEdit() {
@@ -129,6 +148,8 @@ export class NewrecipeComponent implements OnInit {
   }
   stopAdd() {
     this.showAd = false;
+    this.validation = false;
+    return this.validation=false;
   }
 
 }

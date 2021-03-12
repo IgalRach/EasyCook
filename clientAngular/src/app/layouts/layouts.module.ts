@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutsComponent } from './layouts.component';
 import { CookingTermComponent } from '../models/cooking-term/cooking-term.component';
-import { RecipesComponent } from '../recipes/recipes.component';
 import { CategoryComponent } from '../models/category/category.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
@@ -25,16 +24,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CookingTermService } from '../services/cooking-term.service';
 import { NewrecipeComponent } from '../models/newrecipe/newrecipe.component';
 import { DashboardComponent } from '../models/dashboard/dashboard.component';
-
+import { AddRecipeComponent } from '../models/add-recipe/add-recipe.component';
 
 @NgModule({
   declarations: [
     LayoutsComponent,
     CookingTermComponent,
-    RecipesComponent,
     CategoryComponent,
     NewrecipeComponent,
     DashboardComponent,
+    AddRecipeComponent,
   ],
   imports: [
     CommonModule,

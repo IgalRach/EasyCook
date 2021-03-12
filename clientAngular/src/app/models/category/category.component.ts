@@ -1,4 +1,4 @@
-import {  Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../category'
 @Component({
@@ -9,10 +9,12 @@ import { Category } from '../category'
 export class CategoryComponent implements OnInit {
 
   categotyArr: Array<Category>;
-  @Input() Title=""; 
-  showAd=false;
+  @Input() Title = "";
+  showAd = false;
 
-  constructor(private service: CategoryService) { 
+  validation = false;
+
+  constructor(private service: CategoryService) {
     this.categotyArr = new Array<Category>();
   }
 
@@ -20,8 +22,8 @@ export class CategoryComponent implements OnInit {
     this.createTable();
   }
 
-  createTable(){
-    this.categotyArr=[];
+  createTable() {
+    this.categotyArr = [];
     this.service.getCategoeies().subscribe(
       (data: any) => {
         data.forEach((element: any) => {
@@ -31,14 +33,25 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  addCcategory(){
-    this.service.createCategory(this.Title).subscribe(
-      (data: any) => {
-        console.log("succsess");
-        this.showAd=false;
-        this.createTable();
-      }
-    );
+  addCcategory() {
+    if (!this.Title){
+      this.validation = true;
+      this.ValidationErrors();
+    }
+    else {
+      this.service.createCategory(this.Title).subscribe(
+        (data: any) => {
+          console.log("succsess");
+          this.showAd = false;
+          this.createTable();
+        }
+      );
+
+    }
+  }
+
+  ValidationErrors() {
+    return this.validation;
   }
 
   deleteTerm(categoryname: string) {
@@ -50,14 +63,16 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  showAdd(){
+  showAdd() {
     return this.showAd;
   }
-  
-  startAdd(){
-    this.showAd=true;
+
+  startAdd() {
+    this.showAd = true;
   }
-  stopAdd(){
-    this.showAd=false;
+  stopAdd() {
+    this.showAd = false;
+    this.validation = false;
+    return this.validation = false;
   }
 }
