@@ -67,7 +67,6 @@ export class NewrecipeComponent implements OnInit {
     this.filterData = [];
     this.service.getrecipes().subscribe(
       (data: any) => {
-
         data.forEach((element: any) => {
           if (element.recipename.includes(this.TitleSearch))
             this.filterData.push(element)

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   groupBy(): Observable<any>{
-    return this.http.get(this.groupUrl);
+    return this.http.get<any>(this.groupUrl);
   }
 
 }
