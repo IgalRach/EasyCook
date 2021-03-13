@@ -1,0 +1,26 @@
+1.Open the "EasyCook" Directory in "Visual Studio Code".
+
+2.Inside of the "EasyCook" Directory go to the "server" Directory.(cd server)
+
+3.Run in the terminal command (npm install).
+
+4.Run in the terminal the command : (nodemon app.js)   to run the server
+
+5.In the terminal go back to the "EasyCook" Directory (cd ..) and 
+	go to the "clientAngular" Directory (cd clientAngular)
+
+6.Run in the terminal command (npm install).
+
+7.Run in the terminal the command: (ng serve)  to turn on the admin site or 
+(ng serve --open )	to turn on the admin site and open the browser.
+	
+8.In the terminal go back to the "EasyCook" Directory (cd ..) and go to the "client" Directory (cd client)
+
+9.Run in the terminal command (npm install).
+
+10.Run in the terminal the command : (npm start) to run the client.
+
+
+Now you can use the server and the websites.
+
+Enjoy. 

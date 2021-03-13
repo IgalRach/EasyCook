@@ -4,7 +4,7 @@ import Post from './post';
 
 export default function ListOfPosts() {
    
-    const [items, setItems] = React.useState([]); //default is empty array
+    const [items, setItems] = React.useState([]); 
     
     React.useEffect(()=>{
         fetch('http://localhost:8082/recipes')
@@ -22,7 +22,7 @@ export default function ListOfPosts() {
                 <div className="row">
                     {
                         items.map((data, key) => {
-                            return <Post name={data.recipeTitle} key={key} />
+                            return <Post name={data.recipename} img={data.recipePic} category={data.category} numOfComments={data.comments.length} date={data.created} spec={data._id} key={key} />
                         })
                     }
                 

@@ -1,1 +1,34 @@
-<p>add-recipe works!</p>
+<div  id="simpleModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add Recipe</h2>
+        </div>
+        <div *ngIf="ValidationErrors()" class="modal-header">
+            <h2>You Must Fill All The Inputs</h2>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Title" [(ngModel)]="Title">
+        </div>
+        <form>
+            <select [(ngModel)]="Category" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let cat of categoryArr">{{cat.categoryname}}</option>
+            </select>
+        </form>
+        <input type="text" placeholder="Enter Picture Url" [(ngModel)]="recipePic">
+        <input  type="text" placeholder="Enter Proporation Time" [(ngModel)]="propTime">
+        <div>
+            <textarea class="ingredients" type="text" placeholder="Enter Ingredients"
+                [(ngModel)]="ingredients"></textarea>
+        </div>
+        <div>
+            <textarea class="description"  type="text" placeholder="Enter Description"
+                [(ngModel)]="Des"></textarea>
+        </div>
+        <button   (click)="addRecipe()">Submit</button>
+
+        <button (click)="stopAdd()" routerLink="/recipes" >close</button>
+        <div *ngIf="showAdd()"   routerLink="/recipes">
+
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import { RecipesService } from '../../services/recipes.service';
 import { CategoryService } from '../../services/category.service';
 import { Recipe } from '../recipe';
 import { Category } from '../category';
+import { element } from 'protractor';
 
 
 
@@ -85,7 +86,7 @@ export class NewrecipeComponent implements OnInit {
 
   addRecipe() {
     if ((!this.Title) || (!this.Des) || (!this.Category) || (!this.recipePic) || (!this.propTime) || (!this.ingredients)) {
-      this.validation=true;
+      this.validation = true;
       this.ValidationErrors();
     }
     else {
@@ -93,14 +94,29 @@ export class NewrecipeComponent implements OnInit {
         (data: any) => {
           this.validation = false;
           console.log("succsess");
-
+          this.cr();
           // this.createTable();
           this.showAd = false;
         }
       );
     }
   }
+  cr() {
+    // for (let index = 0; index < 10; index++) {
+    //   let element = 2;
+    //   element*=element;
 
+    // }
+    var numbers = [1, 2, 3];
+    for (var _i = 0; _i < 10000; _i++) {
+      var num = 2;
+      num=num*num*_i;
+      console.log(num);
+    }
+
+    this.createTable();
+    // return element;
+  }
   ValidationErrors() {
     return this.validation;
   }
@@ -149,7 +165,7 @@ export class NewrecipeComponent implements OnInit {
   stopAdd() {
     this.showAd = false;
     this.validation = false;
-    return this.validation=false;
+    return this.validation = false;
   }
 
 }
