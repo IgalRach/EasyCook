@@ -8,22 +8,21 @@ const Recipe = new mongoose.Schema({
     required: true,
     unique:true,
   },
+  ingredients:{
+    type: String
+  },
+
   description:{
     type: String,
   },
   category: {
-  // type: mongoose.Schema.Types.ObjectId,
-   //requred: true,
-//    ref:"Category"
     type:String,
   },
-  recipePic:{type: String},//changed from
-  comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
-  created: {
-    type: Date,
-    default: Date.now,
+  propTime:{
+    type:String,
   },
-  //rating: [{ type: Schema.Types.ObjectId, ref: "Rating" }],
+  recipePic:{type: String},
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
 });
 
 module.exports = mongoose.model('Recipe', Recipe);

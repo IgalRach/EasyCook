@@ -4,7 +4,7 @@ const Recipe = require("../models/recipe");
 
 
 const createCategory = async (req) => {
-  Category.findOne({ categoryname: req.body.categoryname }, function (err, category) {
+  await Category.findOne({ categoryname: req.body.categoryname }, function (err, category) {
     if (err) console.log(err);
     if (category) console.log("The category already exist");
     else {

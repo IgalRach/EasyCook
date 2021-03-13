@@ -13,7 +13,7 @@ export default function Recipe({ catId }) {
     const history = useHistory();
 
     const recipesByCat = (e) => {
-        history.push('/categories/category/' + e.target.value);
+       // history.push('/category/'+ e.target.value);
     }
 
 

@@ -1,13 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CategoryLabel({ name, img }) {
-
-    const history = useHistory();
-
-    const showRecipesPerCategory = (e) => {
-        history.push('/categories/category/' + e.target.value);
-    }
 
     return (
         <>
@@ -16,7 +10,8 @@ export default function CategoryLabel({ name, img }) {
                     <div className="row h-100 align-items-center">
                         <div className="col-12">
                             <div className="breadcumb-text text-center">
-                                <input value={name} onClick={showRecipesPerCategory} readOnly style={{ backgroundColor: "transparent",border: "none",color: "white",fontSize: "2.0rem", textAlign: "center", fontWeight: "700"}} />
+                            <Link to={`/category/${name}`} ><input value={name} readOnly style={{ backgroundColor: "transparent",border: "none",color: "white",fontSize: "2.0rem", textAlign: "center", fontWeight: "700"}} /></Link>
+                                
                             </div>
                         </div>
                     </div>

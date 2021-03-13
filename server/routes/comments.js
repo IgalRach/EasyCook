@@ -9,7 +9,6 @@ router.get('/:recipeid/:commentid', CommentController.getById);
 
 router.post('/:recipeid',CommentController.create);
 
-//router.put('/', CommentController.update);
 
 router.delete('/:recipeid/:commentid', CommentController.remove2);
 

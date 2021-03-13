@@ -35,7 +35,8 @@ export default function App() {
           <Route path="/cookingTerms" exact component={CookingPage} />
           <Route path="/categories/" exact component={CategoriesPage} />
           <Route path="/search" exact component={() => <Search />} />
-          <Route path="/categories/category/:name" excat component={RecipesByCategory} />
+          {/* <Route path="/categories/category/:name" excat component={RecipesByCategory} /> */}
+          <Route path="/category/:name" excat component={RecipesByCategory} />
         </Switch>
 
         <Footer />

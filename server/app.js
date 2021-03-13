@@ -7,9 +7,10 @@ const bodyParser = require('body-parser');
 
 const recipes = require('./routes/recipes');
 const categories = require('./routes/categories');
-const accounts = require('./routes/accounts');
 const comments = require('./routes/comments');
 const cookingTerms = require('./routes/cookingTerms');
+const category = require('./routes/category');
+
 
 
 var cors = require('cors');
@@ -25,13 +26,15 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //-----------------------------------End of Database Connection----------------------------------------
 
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/recipes', recipes);
-app.use('/accounts', accounts);
 app.use('/comments', comments);
 app.use('/categories', categories);
-app.use('/cookingTerms', cookingTerms);
+app.use( cookingTerms);
+app.use('/category', category);
 
 
 
@@ -57,36 +60,6 @@ io.on('connection', (socket) => {
     });
   }
   // End of counting users.
-
-
-  socket.on("new-comment", (username, comment, recipename) => {
-    // create a new message and save
-    let newComment = new commentModel({ username, comment });
-    let id = newComment._id;
-    let time = newComment.created;
-    newComment = newComment.save();
-
-    // get the associated user and add new message to user's messages array
-    var recipe = recipeModel.findOne({ name: recipename }).then((doc) => {
-      if (!doc) {
-        let newStock = new recipeModel({ name: recipename });
-        newStock.comments.push(id);
-        newStock.save();
-      }
-      else {
-        doc.comments.push(id);
-        doc.save();
-      }
-    });
-
-    io.emit("comment", {
-      username: username,
-      comment: comment,
-      created: time,
-      recipename: recipename,
-    });
-  });
-
 });
 
 

@@ -1,6 +1,5 @@
 const Recipe = require('../models/recipe');
 const Category = require('../models/category');
-const Comment = require('../models/comment');
 
 
 const createRecipe = async (req) => {
@@ -13,7 +12,9 @@ const createRecipe = async (req) => {
                 recipename: req.body.recipename,
                 description: req.body.description,
                 recipePic: req.body.recipePic,
-                category: category.categoryname
+                category: category.categoryname,
+                propTime:req.body.propTime,
+                ingredients:req.body.ingredients,
             });
             recipe.save().then((newrecipe => {
                 category.recipes.push(newrecipe);
@@ -21,6 +22,7 @@ const createRecipe = async (req) => {
                     if (err) console.log(err);
                     console.log("Created new recipe");
                 });
+            
             }));
         }
     });
@@ -46,32 +48,27 @@ const getRecipeByTitle = async (req) => {
     return recipe;
 }
 
-const getCategoryRecipes = async (req) => {
-    const category = await Category.findOne({ categoryname: req.body.category });
-    for(var i in category.recipes){
-        const recipe= Recipe.findById(category.recipes[i]);
-        json(recipe);
-    }
-
-    return category.recipes;
+const getRecipesByCategory = async (req) => {
+    const category = await Category.findOne({ categoryname: req.params.categoryname }).populate('recipes');
+    return category;
 }
 
 
 
 //need to fix
 const updateRecipe = async (req) => {
-    const recipe = await Recipe.findById(req);
-    var updetedrecipe = recipe;
+    const recipe = await Recipe.findById(req.params.id);
+    if(!recipe){
+        return null;
+    }
+    recipe.recipename=req.body.recipename;
+    recipe.description=req.body.description;
+    recipe.category=req.body.category;
+    recipe.recipePic=req.body.recipePic;
+    recipe.ingredients=req.body.ingredients,
+    await recipe.save();
+    return recipe;
 
-    var name = recipe.body.recipename;
-    var des = recipe.body.description;
-    var pic = recipe.body.recipePic;
-    Recipe.findOne({ recipename: updetedrecipe }, { recipename: name, description: des, recipePic: pic }
-        , function (err, term) {
-            if (err) console.log(err);
-            console.log("TERM UPDATED");
-            return term;
-        });
 }
 
 
@@ -79,21 +76,29 @@ const updateRecipe = async (req) => {
 const deleteRecipe = async (id) => {
     const recipe = await getRecipeById(id);
     const category = await Category.findOne({ categoryname:recipe.category});
-    //for(var com in category.recipes)
-    //      Category.deleteOne({recipes:})
-        
-
     if (!recipe)
         return null;
     await recipe.remove();
 }
+
+const groupBy= async()=>{
+    const data = await Recipe.aggregate([{
+        $group : {
+            _id : "$category",
+            total: {$sum : 1}
+          }  
+    }]);
+    return data;
+}
+
 
 module.exports = {
     createRecipe,
     getRecipeById,
     getRecipes,
     getRecipeByTitle,
-    getCategoryRecipes,
+    getRecipesByCategory,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe,
+    groupBy
 }

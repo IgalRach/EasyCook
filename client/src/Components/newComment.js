@@ -7,7 +7,6 @@ export default function NewComment(comments, setComments) {
    const onClick = () => {
     const index = window.location.toString().lastIndexOf('/') + 1;
     const id = window.location.toString().substring(index);
-    // console.log('id-recipe',id);
 
        fetch('http://localhost:8082/comments/'+ id, {
            method : 'POST',
@@ -22,6 +21,7 @@ export default function NewComment(comments, setComments) {
                    inputRef1.current.value = '';
                    inputRef2.current.value = '';
                    setComments([data.value].concat(comments));
+                   
                }
            }
        )

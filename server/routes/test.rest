@@ -1,0 +1,6 @@
+PATCH http://localhost:8082/cookingTerms/604146deaad18171dc1f86b7
+content-type:application/json
+{
+    title:"test",
+    description:"tess"
+}
