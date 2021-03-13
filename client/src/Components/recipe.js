@@ -1,22 +1,31 @@
 import React from "react";
 import NewComment from "./newComment"
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ScriptTag from 'react-script-tag';
 
 
-export default function Recipe() {
+export default function Recipe({ catId }) {
 
     const [recipesDetails, setRecipesDetails] = React.useState(null);
     const [comments, setComments] = React.useState(null);
+    let para;
 
-    const index = window.location.toString().lastIndexOf('/') + 1;
-    const id = window.location.toString().substring(index);
+    const history = useHistory();
+
+    const recipesByCat = (e) => {
+        history.push('/categories/category/' + e.target.value);
+    }
+
+
+    // if (!catId) {
+        const index = window.location.toString().lastIndexOf('/') + 1;
+        const id = window.location.toString().substring(index);
+    //     para = id;
+    // } else {
+    //     para = catId;
+    // }
 
     React.useEffect(() => {
-        // const index = window.location.toString().lastIndexOf('/') + 1;
-        // const id = window.location.toString().substring(index);
-
-
         fetch('http://localhost:8082/comments/' + id)
             .then(response => response.json())
             .then(data => setComments(data)
@@ -45,7 +54,7 @@ export default function Recipe() {
                     <div className="row">
                         <div className="col-12">
                             <div className="receipe-slider owl-carousel" style={{ display: "block" }}>
-                                <img src={recipesDetails.recipePic} alt="" style={{width: "1110px"}} />
+                                <img src={recipesDetails.recipePic} alt="" style={{ width: "1110px" }} />
                             </div>
                         </div>
                     </div>
@@ -56,21 +65,22 @@ export default function Recipe() {
                         <div className="row">
                             <div className="col-12 col-md-8">
                                 <div className="receipe-headline my-5">
-                                    <span>April 05, 2018</span>
+                                    <span>{recipesDetails.created}</span>
                                     <h2>{recipesDetails.recipename}</h2>
                                     <div className="receipe-duration">
-                                        <h6>Prepertion Time: Up To {recipesDetails.propTime}</h6>
-                                
+                                        <h6>Prepertion Time: Up To {recipesDetails.propTime} min</h6>
+
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 col-md-4">
                                 <div className="receipe-ratings text-right my-5">
-                                    <Link to="/categories" className="btn delicious-btn">For more recipes in {recipesDetails.category}</Link>
+                                    {/* <Link to='/categories/' params={{ cat: recipesDetails.category }} className="btn delicious-btn">For more recipes in {recipesDetails.category}</Link> */}
+                                    <input className="btn delicious-btn" value={recipesDetails.category} onClick={recipesByCat} readOnly />
                                 </div>
                             </div>
                         </div>
-                        <div id="disabledBox1" style={{display: "none"}}> {recipesDetails.description}</div>
+                        <div id="disabledBox1" style={{ display: "none" }}> {recipesDetails.description}</div>
                         <div className="row">
                             <div className="col-12 col-lg-8 splitted">
 
@@ -79,13 +89,13 @@ export default function Recipe() {
                             <div className="col-12 col-lg-4">
                                 <div className="ingredients dynamic">
                                     <h4>Ingredients</h4>
-                                    <div id="disabledBox2" style={{display: "none"}}> {recipesDetails.ingredients}</div>
+                                    <div id="disabledBox2" style={{ display: "none" }}> {recipesDetails.ingredients}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-12" >
-                                <div className="section-heading text-left" style={{marginBottom: "40px"}}>
+                                <div className="section-heading text-left" style={{ marginBottom: "40px" }}>
                                     <h3>Leave a comment</h3>
                                 </div>
                             </div>

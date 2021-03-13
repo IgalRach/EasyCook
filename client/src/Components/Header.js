@@ -5,14 +5,21 @@ import ScriptTag from 'react-script-tag';
 
 
 export default function Header() {
-    
+
     const history = useHistory();
 
+    const handleTest = (e) => {
+        if (e.key === 'Enter') {
+        window.location.reload(false);
+        }
+    }
+
     const doSearch = (e) => {
-        if(e.target.value === "")
+        if (e.target.value === "")
             history.push('/');
-        else 
-            history.push('/search?q=recipe/'+ e.target.value);
+        else
+         //   history.push('/search?q=recipe/' + e.target.value);
+            history.push('/search?q=' + e.target.value);
     }
 
     return (
@@ -48,11 +55,11 @@ export default function Header() {
                                         <li><Link to="/categories">Categories</Link></li>
                                     </ul>
                                     {/* Newsletter Form */}
-                                    <div className="search-btn" style={{marginLeft: "70px", marginTop: "-20px"}} >
-                                    <input style={{ border:"none" }} className="navBtn" type="search" name="search" placeholder="Type any keywords..." onChange={doSearch} />
+                                    <div className="search-btn" style={{ marginLeft: "70px", marginTop: "-20px" }} >
+                                        <input style={{ border: "none" }} className="navBtn" type="search" name="search" placeholder="Type any keywords..." onKeyPress={handleTest} onChange={doSearch} />
                                         <i className="fa fa-search" type="submit" aria-hidden="true" />
                                     </div>
-                                    <button id="adminBtn" className="btn adminBtn" style={{backgroundColor: "#40ba37",color: "white",fontweight: "600",textTransform: "uppercase",marginLeft: "8px"}} >Admin</button>
+                                    <button id="adminBtn" className="btn adminBtn" style={{ backgroundColor: "#40ba37", color: "white", fontweight: "600", textTransform: "uppercase", marginLeft: "8px" }} >Admin</button>
                                 </div>
                                 {/* Nav End */}
                             </div>
@@ -62,7 +69,7 @@ export default function Header() {
             </div>
             <ScriptTag type="text/javascript" src="../js/admin.js" />
         </header>
-        );
+    );
 }
 
 

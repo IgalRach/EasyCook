@@ -2,13 +2,13 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from './Components/header';
 import Footer from './Components/footer';
-import ContactPage from './Components/Pages/ContactPage';
 import RecipesPage from './Components/Pages/RecipesPage';
 import HomePage from './Components/Pages/HomePage';
 import AboutPage from './Components/Pages/AboutPage';
 import DetailsPage from './Components/Pages/DetailsPage';
 import CookingPage from './Components/Pages/CookingPage';
 import Search from './Components/search';
+import RecipesByCategory from './Components/recipesByCategory';
 import io from "socket.io-client";
 import CategoriesPage from './Components/Pages/CategoriesPage';
 
@@ -33,8 +33,9 @@ export default function App() {
           <Route path="/recipes" exact component={RecipesPage} />
           <Route path="/recipes/:id" exact component={DetailsPage} />
           <Route path="/cookingTerms" exact component={CookingPage} />
-          <Route path="/categories" exact component={CategoriesPage} />
+          <Route path="/categories/" exact component={CategoriesPage} />
           <Route path="/search" exact component={() => <Search />} />
+          <Route path="/categories/category/:name" excat component={RecipesByCategory} />
         </Switch>
 
         <Footer />

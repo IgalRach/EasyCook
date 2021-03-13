@@ -7,7 +7,7 @@ export default function NewComment(comments, setComments) {
    const onClick = () => {
     const index = window.location.toString().lastIndexOf('/') + 1;
     const id = window.location.toString().substring(index);
-    console.log('id-recipe',id);
+    // console.log('id-recipe',id);
 
        fetch('http://localhost:8082/comments/'+ id, {
            method : 'POST',
@@ -25,6 +25,8 @@ export default function NewComment(comments, setComments) {
                }
            }
        )
+
+       alert('comment was sent successfuly!');
    }
 
    const inputRef1 = React.useRef(null);
@@ -34,22 +36,19 @@ export default function NewComment(comments, setComments) {
         <div className="row">
             <div className="col-12">
                 <div className="contact-form-area">
-                    <form >
+                    {/* <form > */}
                         <div className="row">
                             <div className="col-12">
                                 <input ref={inputRef1} name="username" type="text" className="form-control" id="name" placeholder="Name" />
                             </div>
-                            {/* <div className="col-12 col-lg-6">
-                                <input type="email" className="form-control" id="email" placeholder="E-mail" />
-                            </div>           */}
                             <div className="col-12">
                                 <textarea ref={inputRef2} name="description" className="form-control" id="message" cols={30} rows={10} placeholder="Message" defaultValue={""} />
                             </div>
                             <div className="col-12">
-                                <button onClick={onClick} className="btn delicious-btn mt-30" type="submit">Post Comment</button>
+                                <button onClick={onClick} className="btn delicious-btn mt-30" type="button">Post Comment</button>
                             </div>
                         </div>
-                    </form>
+                    {/* </form> */}
                 </div>
             </div>
         </div>

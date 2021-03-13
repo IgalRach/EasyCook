@@ -2,7 +2,7 @@ import React from "react";
 import Post from './post';
 
 
-export default function ListOfPosts() {
+export default function ListOfCategories() {
    
     const [items, setItems] = React.useState([]); 
     
@@ -22,7 +22,7 @@ export default function ListOfPosts() {
                 <div className="row">
                     {
                         items.map((data, key) => {
-                            return <Post name={data.recipename} img={data.recipePic} category={data.category} numOfComments={data.comments.length} date={data.created} spec={data._id} key={key} />
+                            return <Post name={data.recipename} numOfComments={data.comments.length} date={data.created} spec={data._id} key={key} />
                         })
                     }
                 
