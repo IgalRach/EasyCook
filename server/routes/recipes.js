@@ -10,7 +10,7 @@ router.get('/',recipeController.getRecipes);
 
 router.get('/recipe/:recipename', recipeController.getRecipeByTitle);
 router.get('/:id', recipeController.getRecipeById);
-router.get('/cateory', recipeController.getRecipesByCategory);
+router.get('/category/:category', recipeController.getRecipesByCategory);
 
 router.post('/',recipeController.createRecipe);
 

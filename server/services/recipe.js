@@ -49,7 +49,7 @@ const getRecipeByTitle = async (req) => {
 }
 
 const getRecipesByCategory = async (req) => {
-    const category = await Category.findOne({ categoryname: req.body.category }).populate('recipes');
+    const category = await Category.findOne({ categoryname: req.params.category }).populate('recipes');
     return category;
 }
 

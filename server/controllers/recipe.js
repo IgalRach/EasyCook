@@ -36,7 +36,6 @@ const getRecipeByTitle = async (req,res)=>{
     }
 }
 const getRecipesByCategory = async (req,res)=>{
-
     const recipes= await RecipeService.getRecipesByCategory(req);
     try {
         res.json(recipes);
