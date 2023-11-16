@@ -42,11 +42,16 @@ const getRecipes = async () => {
 
 
 const getRecipeByTitle = async (req) => {
-    const recipe = await Recipe.find({
-        'recipename': { $regex: `.*${req.params.recipename}.*` }
-    })
-    return recipe;
-}
+    try {
+      const recipe = await Recipe.find({
+        'recipename': { $regex: new RegExp(req.params.recipename, 'i') }
+      });
+  
+      return recipe;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 const getRecipesByCategory = async (req) => {
     const category = await Category.findOne({ categoryname: req.params.category }).populate('recipes');
